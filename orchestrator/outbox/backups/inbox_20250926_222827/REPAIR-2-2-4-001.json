@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-2-4-001",
+  "type": "generate_tests",
+  "requirement_id": "2.2.4",
+  "input_files": [
+    "cli_v4.py"
+  ],
+  "expected_outputs": [
+    "test_vacancy_archive_cleanup.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "archive-size-limits",
+    "telegram-alerts"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for vacancy archive cleanup including 1000MB limit validation, 10% deletion logic and telegram warning system",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Archive cleanup testing requires understanding of storage management and notification systems",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for vacancy archive cleanup including 1000MB limit validation, 10% deletion logic and telegram warning system",
+    "switch_instruction_rus": "Проверьте корректность очистки архивов вакансий"
+  },
+  "human_notes_rus": "Тесты очистки архивов вакансий - лимит 1000МБ, удаление 10%, предупреждения",
+  "auto_execute": true
+}

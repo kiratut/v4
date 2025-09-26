@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-8-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.8.3",
+  "input_files": [
+    "core/auth.py",
+    "plugins/fetcher_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "error_handler.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "error-handling",
+    "ban-recovery"
+  ],
+  "estimated_effort_hours": 7,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement HH API error handling and ban recovery system including response diagnostics, retry logic and profile rotation",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Error handling requires understanding of API response patterns and recovery strategies",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement HH API error handling and ban recovery system including response diagnostics, retry logic and profile rotation",
+    "switch_instruction_rus": "Проверьте корректность обработки ошибок и банов API"
+  },
+  "human_notes_rus": "Реализация обработки ошибок и банов API HH с восстановлением",
+  "auto_execute": false
+}

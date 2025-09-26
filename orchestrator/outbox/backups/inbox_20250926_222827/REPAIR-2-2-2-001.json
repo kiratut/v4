@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-2-2-001",
+  "type": "generate_tests",
+  "requirement_id": "2.2.2",
+  "input_files": [
+    "cli_v4.py"
+  ],
+  "expected_outputs": [
+    "test_log_archive_cleanup.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "file-cleanup",
+    "archive-management"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for log archive cleanup including size limits validation, old archive deletion and cleanup logging",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Archive cleanup testing requires understanding of file system operations and size management",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for log archive cleanup including size limits validation, old archive deletion and cleanup logging",
+    "switch_instruction_rus": "Проверьте корректность очистки архивов логов"
+  },
+  "human_notes_rus": "Тесты очистки архивов логов - лимиты размера, удаление старых архивов",
+  "auto_execute": true
+}

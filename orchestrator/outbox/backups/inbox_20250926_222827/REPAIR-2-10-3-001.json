@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-3-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.3",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_vacancy_deduplication.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "crud-operations",
+    "versioning-system"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create comprehensive tests for database save/update operations including versioning, deduplication and CRUD validation",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Database CRUD testing requires understanding of data integrity and versioning logic",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive tests for database save/update operations including versioning, deduplication and CRUD validation",
+    "switch_instruction_rus": "Проверьте корректность тестирования операций записи БД"
+  },
+  "human_notes_rus": "Тесты сохранения/обновления записей БД с версионированием",
+  "auto_execute": false
+}

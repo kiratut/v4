@@ -1,0 +1,35 @@
+{
+  "task_id": "TASK-ISSUE-008",
+  "type": "generate_patch",
+  "requirement_id": "2.2.1",
+  "input_files": [
+    "scripts/",
+    "docs/"
+  ],
+  "expected_outputs": [
+    "cleaning_rules.json",
+    "cleanup_script.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "json-schema",
+    "explicit-rules",
+    "safe-operations"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create explicit JSON cleaning rules array to replace implicit cleaning logic with clear rule-based system",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Refactoring implicit rules to explicit JSON structure requires systematic analysis and safe implementation",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create explicit JSON cleaning rules array to replace implicit cleaning logic with clear rule-based system",
+    "switch_instruction_rus": "Убедитесь что все правила очистки явно определены и безопасны"
+  },
+  "human_notes_rus": "Правила очистки неявные - нужен явный JSON массив для прозрачности",
+  "auto_execute": true
+}

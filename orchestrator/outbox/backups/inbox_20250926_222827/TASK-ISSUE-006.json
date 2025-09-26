@@ -1,0 +1,34 @@
+{
+  "task_id": "TASK-ISSUE-006",
+  "type": "generate_patch",
+  "requirement_id": "2.4.1",
+  "input_files": [
+    ".github/workflows/"
+  ],
+  "expected_outputs": [
+    "ci.yml",
+    "pipeline_config.json"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "github-actions",
+    "windows-runner",
+    "pytest-integration"
+  ],
+  "estimated_effort_hours": 8,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create GitHub Actions CI pipeline for Windows with Python setup, dependency installation, and automated testing",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "CI pipeline setup requires understanding of GitHub Actions syntax and Windows-specific configuration",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create GitHub Actions CI pipeline for Windows with Python setup, dependency installation, and automated testing",
+    "switch_instruction_rus": "Проверьте совместимость с Windows runner и корректность установки зависимостей"
+  },
+  "human_notes_rus": "Отсутствует CI pipeline - критично для автоматизации тестирования",
+  "auto_execute": false
+}

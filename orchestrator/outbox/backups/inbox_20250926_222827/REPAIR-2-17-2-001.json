@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-17-2-001",
+  "type": "generate_patch",
+  "requirement_id": "2.17.2",
+  "input_files": [
+    "core/scheduler_daemon.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "disk_recovery.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "disk-recovery",
+    "space-management"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement disk space recovery system including cleanup procedures, space monitoring and automatic recovery mechanisms",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Disk recovery requires understanding of file system operations and space management strategies",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement disk space recovery system including cleanup procedures, space monitoring and automatic recovery mechanisms",
+    "switch_instruction_rus": "Проверьте корректность системы восстановления дискового пространства"
+  },
+  "human_notes_rus": "Реализация восстановления дискового пространства - очистка, мониторинг",
+  "auto_execute": true
+}

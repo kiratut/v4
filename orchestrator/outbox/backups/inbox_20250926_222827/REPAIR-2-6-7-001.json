@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-6-7-001",
+  "type": "generate_patch",
+  "requirement_id": "2.6.7",
+  "input_files": [
+    "core/db_log_handler.py",
+    "core/scheduler_daemon.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "dispatcher_config.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "dispatcher-config",
+    "task-routing"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Implement dispatcher configuration including task routing rules, priority settings and execution policies",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Dispatcher configuration requires understanding of task management and routing logic",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement dispatcher configuration including task routing rules, priority settings and execution policies",
+    "switch_instruction_rus": "Проверьте корректность конфигурации диспетчера"
+  },
+  "human_notes_rus": "Реализация конфигурации диспетчера - правила маршрутизации, приоритеты",
+  "auto_execute": true
+}

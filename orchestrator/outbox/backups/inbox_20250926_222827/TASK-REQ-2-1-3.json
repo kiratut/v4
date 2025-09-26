@@ -1,0 +1,33 @@
+{
+  "task_id": "TASK-REQ-2-1-3",
+  "type": "generate_tests",
+  "requirement_id": "2.1.3",
+  "input_files": [
+    "core/auth.py",
+    "config/auth_roles.json"
+  ],
+  "expected_outputs": [
+    "test_auth_profiles.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "auth-validation",
+    "profile-status"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for HH authorization profile status collection and working profile percentage calculation",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Auth profile testing requires understanding of authorization flow and status validation",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for HH authorization profile status collection and working profile percentage calculation",
+    "switch_instruction_rus": "Проверьте корректность тестирования auth профилей"
+  },
+  "human_notes_rus": "Тесты авторизации HH - критично для работы с API",
+  "auto_execute": false
+}

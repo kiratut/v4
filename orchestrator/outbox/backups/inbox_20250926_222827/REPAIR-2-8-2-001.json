@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-8-2-001",
+  "type": "generate_patch",
+  "requirement_id": "2.8.2",
+  "input_files": [
+    "core/auth.py",
+    "config/auth_roles.json"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "profile_selector.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "profile-selection",
+    "task-distribution"
+  ],
+  "estimated_effort_hours": 6,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement HH profile selection system for task distribution including priority-based selection, ban avoidance and task type routing",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Profile selection logic requires understanding of task routing algorithms and state management",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement HH profile selection system for task distribution including priority-based selection, ban avoidance and task type routing",
+    "switch_instruction_rus": "Проверьте корректность выбора профилей по задачам"
+  },
+  "human_notes_rus": "Реализация выбора профиля HH авторизации по задачам/таскерам",
+  "auto_execute": false
+}

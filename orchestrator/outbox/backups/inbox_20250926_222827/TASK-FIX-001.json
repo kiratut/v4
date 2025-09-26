@@ -1,0 +1,33 @@
+{
+  "task_id": "TASK-FIX-001",
+  "type": "apply_fix",
+  "requirement_id": "2.1.2",
+  "input_files": [
+    "tests/consolidated_tests.py"
+  ],
+  "expected_outputs": [
+    "consolidated_tests.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "apply-unified-diff",
+    "preserve-existing-tests",
+    "windows-compatible"
+  ],
+  "estimated_effort_hours": 2,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Apply the provided unified diff patch to fix flaky service status test with retry mechanism and multiple file checks",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Direct patch application with verification of test functionality",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "grok-code-fast-1"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Apply the provided unified diff patch to fix flaky service status test with retry mechanism and multiple file checks",
+    "switch_instruction_rus": "Примените патч для исправления нестабильного теста статуса сервиса"
+  },
+  "human_notes_rus": "Применить готовый патч для исправления нестабильного теста",
+  "auto_execute": false
+}

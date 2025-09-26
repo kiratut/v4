@@ -1,0 +1,33 @@
+{
+  "task_id": "TASK-REQ-2-4-2",
+  "type": "generate_tests",
+  "requirement_id": "2.4.2",
+  "input_files": [
+    "web/monitoring_dashboard.py",
+    "web/templates/dashboard.html"
+  ],
+  "expected_outputs": [
+    "test_dashboard_panel.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "ui-elements",
+    "panel-functionality"
+  ],
+  "estimated_effort_hours": 6,
+  "suggested_model": "sonnet-4",
+  "suggested_prompt": "Create comprehensive tests for dashboard panel functionality including UI elements validation and monitoring display",
+  "model_recommendation": {
+    "suggested_model": "sonnet-4",
+    "model_recommendation_reason": "Dashboard testing requires UI validation and integration testing capabilities",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive tests for dashboard panel functionality including UI elements validation and monitoring display",
+    "switch_instruction_rus": "Проверьте что тесты покрывают все панели мониторинга"
+  },
+  "human_notes_rus": "Тесты панели мониторинга - критично для веб-интерфейса",
+  "auto_execute": false
+}

@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-3-2-001",
+  "type": "generate_patch",
+  "requirement_id": "2.3.2",
+  "input_files": [
+    "core/db_log_handler.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "telemetry_schema.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "telemetry-logging",
+    "json-schema"
+  ],
+  "estimated_effort_hours": 6,
+  "suggested_model": "sonnet-4",
+  "suggested_prompt": "Implement telemetry logging with structured JSON schema for system metrics, performance data and event tracking",
+  "model_recommendation": {
+    "suggested_model": "sonnet-4",
+    "model_recommendation_reason": "Telemetry implementation requires structured data modeling and logging architecture",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement telemetry logging with structured JSON schema for system metrics, performance data and event tracking",
+    "switch_instruction_rus": "Проверьте корректность схемы телеметрии"
+  },
+  "human_notes_rus": "Реализация телеметрии - структурированное логирование с JSON схемой",
+  "auto_execute": true
+}

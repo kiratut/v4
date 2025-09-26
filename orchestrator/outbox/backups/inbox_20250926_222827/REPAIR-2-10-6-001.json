@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-6-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.6",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_database_statistics_calculation.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "statistics-calculation",
+    "analytics-queries"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create tests for database statistics calculation including usage metrics, performance analytics and data distribution analysis",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Statistics testing requires understanding of analytical queries and metric calculations",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for database statistics calculation including usage metrics, performance analytics and data distribution analysis",
+    "switch_instruction_rus": "Проверьте корректность тестирования расчета статистики БД"
+  },
+  "human_notes_rus": "Тесты расчета статистики БД - метрики использования, аналитика",
+  "auto_execute": true
+}

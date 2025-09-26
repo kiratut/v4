@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-11-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.11.3",
+  "input_files": [
+    "plugins/fetcher_v4.py",
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "id_collector.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "id-collection",
+    "duplicate-prevention"
+  ],
+  "estimated_effort_hours": 6,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement vacancy ID collection and storage system including duplicate detection and database integration",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "ID collection requires understanding of data deduplication and database integration patterns",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement vacancy ID collection and storage system including duplicate detection and database integration",
+    "switch_instruction_rus": "Проверьте корректность сбора и хранения ID вакансий"
+  },
+  "human_notes_rus": "Реализация сбора ID вакансий с защитой от дублей и сохранением в БД",
+  "auto_execute": false
+}

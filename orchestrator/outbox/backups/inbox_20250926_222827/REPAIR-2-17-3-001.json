@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-17-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.17.3",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "db_recovery.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "database-recovery",
+    "corruption-repair"
+  ],
+  "estimated_effort_hours": 9,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement database recovery system including corruption detection, repair procedures and backup restoration mechanisms",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Database recovery requires understanding of corruption detection and repair strategies",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": true,
+    "suggested_prompt": "Implement database recovery system including corruption detection, repair procedures and backup restoration mechanisms",
+    "switch_instruction_rus": "Проверьте корректность системы восстановления БД перед внедрением"
+  },
+  "human_notes_rus": "Реализация восстановления БД - детекция повреждений, процедуры восстановления",
+  "auto_execute": true
+}

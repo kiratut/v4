@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-11-1-001",
+  "type": "generate_patch",
+  "requirement_id": "2.11.1",
+  "input_files": [
+    "plugins/fetcher_v4.py",
+    "config/filters.json"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "vacancy_search.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "hh-api-integration",
+    "search-requests"
+  ],
+  "estimated_effort_hours": 8,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement vacancy search system using HH.ru API including filter processing, request pagination and ID collection",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "API integration requires understanding of HTTP requests, pagination patterns and data processing",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement vacancy search system using HH.ru API including filter processing, request pagination and ID collection",
+    "switch_instruction_rus": "Проверьте корректность интеграции с API поиска вакансий"
+  },
+  "human_notes_rus": "Реализация поиска вакансий через API HH.ru с обработкой фильтров",
+  "auto_execute": false
+}

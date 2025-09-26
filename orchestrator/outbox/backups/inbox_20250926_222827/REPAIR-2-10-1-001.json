@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-1-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.1",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_database_health_check.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "database-health",
+    "integrity-checks"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create comprehensive database health check tests including integrity validation, performance metrics and connectivity checks",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Database health testing requires understanding of database integrity concepts and performance metrics",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive database health check tests including integrity validation, performance metrics and connectivity checks",
+    "switch_instruction_rus": "Проверьте корректность тестирования здоровья БД"
+  },
+  "human_notes_rus": "Тесты диагностики здоровья БД - целостность, размер, производительность",
+  "auto_execute": false
+}

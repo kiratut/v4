@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-4-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.4",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_database_read_operations.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "read-operations",
+    "performance-validation"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create database read operation tests including data retrieval validation, performance checks and query correctness",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Database read testing requires understanding of query patterns and performance validation",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create database read operation tests including data retrieval validation, performance checks and query correctness",
+    "switch_instruction_rus": "Проверьте корректность тестирования операций чтения БД"
+  },
+  "human_notes_rus": "Тесты операций чтения БД - корректность и быстрота извлечения данных",
+  "auto_execute": false
+}

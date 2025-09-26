@@ -1,0 +1,35 @@
+{
+  "task_id": "TASK-ISSUE-004",
+  "type": "generate_patch",
+  "requirement_id": "2.6.5",
+  "input_files": [
+    "core/auth.py",
+    "config/config_v4.json"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "auth_tests.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "unified-diff",
+    "optional-files",
+    "fallback-handling"
+  ],
+  "estimated_effort_hours": 2,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Fix auth fallback to handle missing optional auth files per policy and provide default headers from config",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Simple fallback logic implementation with clear error handling requirements",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "grok-code-fast-1"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Fix auth fallback to handle missing optional auth files per policy and provide default headers from config",
+    "switch_instruction_rus": "Проверьте что fallback корректно обрабатывает отсутствующие auth файлы"
+  },
+  "human_notes_rus": "Отсутствует обработка опциональных auth файлов согласно политике",
+  "auto_execute": true
+}

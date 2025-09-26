@@ -1,0 +1,33 @@
+{
+  "task_id": "TASK-FIX-003",
+  "type": "apply_fix",
+  "requirement_id": "2.4.1",
+  "input_files": [
+    ".github/workflows/"
+  ],
+  "expected_outputs": [
+    "ci.yml"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "create-new-file",
+    "github-actions",
+    "windows-runner"
+  ],
+  "estimated_effort_hours": 1,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create GitHub Actions CI pipeline file from the provided template with Windows runner and Python setup",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "File creation from template with GitHub Actions configuration",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "grok-code-fast-1"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create GitHub Actions CI pipeline file from the provided template with Windows runner and Python setup",
+    "switch_instruction_rus": "Создайте файл CI pipeline из готового шаблона"
+  },
+  "human_notes_rus": "Создать CI pipeline из готового шаблона",
+  "auto_execute": false
+}

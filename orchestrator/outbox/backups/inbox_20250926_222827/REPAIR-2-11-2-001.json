@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-11-2-001",
+  "type": "generate_patch",
+  "requirement_id": "2.11.2",
+  "input_files": [
+    "plugins/fetcher_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "pagination_handler.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "pagination-logic",
+    "api-limits"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement API pagination system for HH.ru including page counting, limit handling and efficient data collection",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Pagination implementation requires understanding of API limits and efficient data collection patterns",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement API pagination system for HH.ru including page counting, limit handling and efficient data collection",
+    "switch_instruction_rus": "Проверьте корректность реализации пагинации API"
+  },
+  "human_notes_rus": "Реализация пагинации API HH.ru - подсчет страниц, лимиты",
+  "auto_execute": true
+}
