@@ -1,0 +1,13 @@
+id: '2.5.7'
+title: Ручное обновление
+description: "Кнопка - принудительный перерасчет 2.5.1, чтение 2.5.2 и обновление данных на панели. Запись в лог события нажатия доступной для нажатия кнопки."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_filters_management_ui
+module_paths:
+  - web/static/dashboard.js
+owner: orchestrator
+priority: 2
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.8.3'
+title: Обработка ошибок и банов API HH
+description: Диагностика ответов API. Повторный возврат после паузы к приоритетному профилю при восстановлении авторизации.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_api_auth_profile_rotation
+module_paths:
+  - core/auth.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

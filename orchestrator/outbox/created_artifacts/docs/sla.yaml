@@ -1,0 +1,7 @@
+api_response_time_ms: 500
+ui_refresh_interval_ms: 3000
+dashboard_stale_threshold_minutes: 5
+tolerances:
+  cpu_percent: 90
+  mem_percent: 80
+  disk_percent: 80

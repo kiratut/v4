@@ -1,0 +1,35 @@
+{
+  "task_id": "TASK-ISSUE-003",
+  "type": "generate_tests",
+  "requirement_id": "2.4.4",
+  "input_files": [
+    "web/static/dashboard.js",
+    "web/templates/dashboard.html"
+  ],
+  "expected_outputs": [
+    "test_visual_regression.py",
+    "baseline_screenshots.png"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "playwright-based",
+    "baseline-creation",
+    "automated-visual-diff"
+  ],
+  "estimated_effort_hours": 16,
+  "suggested_model": "sonnet-4",
+  "suggested_prompt": "Create automated visual regression test suite using Playwright with baseline screenshot creation and diff comparison functionality",
+  "model_recommendation": {
+    "suggested_model": "sonnet-4",
+    "model_recommendation_reason": "Visual testing setup requires complex tooling integration and comprehensive test infrastructure",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-5-high"
+    ],
+    "require_human_switch": true,
+    "suggested_prompt": "Create automated visual regression test suite using Playwright with baseline screenshot creation and diff comparison functionality",
+    "switch_instruction_rus": "Проверьте настройку Playwright и создание baseline скриншотов перед внедрением"
+  },
+  "human_notes_rus": "Отсутствует автоматическая визуальная регрессия - критично для стабильности UI",
+  "auto_execute": false
+}

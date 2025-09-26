@@ -1,0 +1,13 @@
+id: '2.11.1'
+title: Формирование запроса в API
+description: "В цикле по фильтрам преобразование json строки фильтра в url API с поисковыми параметрами. Расчет количества символов в url. Regexp проверка корректности url по правилам API в https\://api.hh.ru/openapi/redoc#tag/Poisk-vakansij/operation/get-vacancies ."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_search_finds_new_vacancies
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

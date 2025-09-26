@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Orchestrator Manifest Schema",
+  "type": "object",
+  "required": ["task_id", "status", "created_at"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "decomposed",
+        "waiting_human",
+        "claimed",
+        "in_progress",
+        "done",
+        "needs_fix",
+        "approved",
+        "escalate_human",
+        "failed"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "claimed_by": { "type": ["string", "null"] },
+    "model_used": { "type": ["string", "null"] },
+    "suggested_model": { "type": "string" },
+    "suggested_prompt": { "type": "string" },
+    "model_recommendation_reason": { "type": "string" },
+    "tokens_used": { "type": "number", "minimum": 0 },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "type": { "type": "string" },
+          "sha256": { "type": "string" }
+        },
+        "required": ["path","type"]
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "pytest_pass_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "visual_diff_pixels": { "type": "integer", "minimum": 0 },
+        "score": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "human_notes_rus": { "type": "string" },
+    "human_response_rus": { "type": "string" },
+    "approved_by": { "type": ["string", "null"] },
+    "approved_at": { "type": ["string", "null"], "format": "date-time" },
+    "logs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

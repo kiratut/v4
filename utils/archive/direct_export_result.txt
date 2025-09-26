@@ -1,0 +1,5 @@
+Прямой экспорт результат:
+Записей: 10
+Размер файла: 7242 байт
+Путь: data\direct_test_export.xlsx
+Колонки: title, company, salary_from, salary_to, currency, experience, area, published_at, url, filter_id

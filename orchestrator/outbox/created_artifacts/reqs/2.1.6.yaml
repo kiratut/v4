@@ -1,0 +1,15 @@
+id: '2.1.6'
+title: Защита от зависания и ошибок
+description: Проверка наличия записей в логе за период (параметр) и наличие ошибок.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_critical_event_logging
+module_paths:
+  - core/db_log_handler.py
+  - web/server.py
+  - tests/consolidated_tests.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.1.3'
+title: Наличие авторизации HH
+description: "Собирает статусы по включенным профилям авторизации hh. При наличии проблем на любом профиле за прошедший период накопления диагностики - пропорциональное снижение % рабочих профилей."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_02_api_auth_headers
+module_paths:
+  - core/auth.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

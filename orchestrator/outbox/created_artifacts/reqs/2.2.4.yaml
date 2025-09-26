@@ -1,0 +1,13 @@
+id: '2.2.4'
+title: Очистка архивов вакансий
+description: "Архивы вакансий >1000МБ\: удаление 10% самых старых архивов. Макс объем - параметр. Достижение макс.объёма-5% - предупреждение в телеграмм. Запись в лог."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_cleanup_command
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

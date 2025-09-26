@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-12-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.12.3",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "deduplication_engine.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "deduplication-algorithm",
+    "key-matching"
+  ],
+  "estimated_effort_hours": 8,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement vacancy deduplication system including key-based matching, duplicate detection and version comparison algorithms",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Deduplication requires understanding of matching algorithms and data comparison logic",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": true,
+    "suggested_prompt": "Implement vacancy deduplication system including key-based matching, duplicate detection and version comparison algorithms",
+    "switch_instruction_rus": "Проверьте корректность алгоритмов дедупликации перед внедрением"
+  },
+  "human_notes_rus": "Реализация дедупликации вакансий - сопоставление по ключевым полям",
+  "auto_execute": true
+}

@@ -1,0 +1,12 @@
+id: '2.15.4'
+title: Отправка сжатой аналитики в Telegram с вложением сводки
+description: Доставка аналитики пользователю
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_telegram_daily_summary
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

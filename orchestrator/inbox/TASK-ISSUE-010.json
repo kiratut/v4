@@ -1,0 +1,34 @@
+{
+  "task_id": "TASK-ISSUE-010",
+  "type": "generate_patch",
+  "requirement_id": "2.4.4",
+  "input_files": [
+    "web/static/dashboard.js"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "stale_state_tests.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "unified-diff",
+    "stale-data-handling",
+    "button-state-management"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Implement dashboard stale state handling with visual highlighting and disabled button management when daemon is unavailable",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "UI state management requires careful handling of multiple scenarios and user experience considerations",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement dashboard stale state handling with visual highlighting and disabled button management when daemon is unavailable",
+    "switch_instruction_rus": "Проверьте корректность обработки устаревших данных и отключения кнопок"
+  },
+  "human_notes_rus": "Отсутствует обработка устаревших данных и отключение кнопок в панели",
+  "auto_execute": true
+}

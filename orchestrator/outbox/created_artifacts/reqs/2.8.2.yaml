@@ -1,0 +1,13 @@
+id: '2.8.2'
+title: Выбор профиля HH авторизации по задачам/таскерам
+description: Получение запросов на hh авторизацию от запущенных таскеров или модулей. Выбор профиля и механики авторизации из auth_roles.json по приоритету и типу (загрузка/отклики) с учётом отсутствия активного бана/каптчи профиля.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_hh_multiple_auth_profiles
+module_paths:
+  - core/auth.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

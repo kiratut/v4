@@ -1,0 +1,13 @@
+id: '2.12.4'
+title: Сохранение версий и новых вакансий
+description: "Перенос из tt в БД. Проверка, если есть id, то добавляем новую версию, иначе - версию 1."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_vacancy_deduplication
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

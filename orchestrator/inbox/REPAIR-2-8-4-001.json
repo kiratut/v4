@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-8-4-001",
+  "type": "generate_tests",
+  "requirement_id": "2.8.4",
+  "input_files": [
+    "plugins/fetcher_v4.py",
+    "core/auth.py"
+  ],
+  "expected_outputs": [
+    "test_api_auth_profile_rotation.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "auth-parameter-testing",
+    "user-agent-rotation"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create tests for HH authorization parameter testing including User-Agent combinations, exponential backoff and profile rotation on bans",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Authorization parameter testing requires understanding of retry strategies and parameter combinations",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for HH authorization parameter testing including User-Agent combinations, exponential backoff and profile rotation on bans",
+    "switch_instruction_rus": "Проверьте корректность тестирования параметров авторизации"
+  },
+  "human_notes_rus": "Тесты тестирования и перебора параметров авторизации HH",
+  "auto_execute": true
+}

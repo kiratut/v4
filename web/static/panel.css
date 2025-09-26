@@ -1,0 +1,39 @@
+/* // Chg_PANEL_CSS_2409: стили новой панели под мокап */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #333; }
+
+.header-bar { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.header-left { display: flex; align-items: center; gap: 10px; }
+.header-left h1 { font-size: 18px; font-weight: 600; }
+.subtitle { opacity: 0.85; font-size: 11px; }
+.header-right { display: flex; align-items: center; gap: 8px; }
+
+.container { height: calc(100vh - 48px); padding: 8px; overflow: hidden; }
+
+.status-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 6px; height: 60px; }
+.dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; height: calc(100vh - 114px); }
+
+.card { background: #fff; border-radius: 8px; padding: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid #e0e7ff; overflow: hidden; }
+.card-header { margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #f0f0f0; }
+.card-title { font-size: 16px; font-weight: 600; color: #2d3748; }
+
+.status-card { padding: 6px; display: flex; flex-direction: column; justify-content: center; }
+.status-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; color: #2d3748; }
+.status-value { font-size: 16px; color: #666; font-weight: 500; }
+
+/* Buttons */
+.btn { padding: 8px 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; }
+.btn-primary { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 11px; }
+.btn-primary:hover { filter: brightness(1.02); }
+
+/* Tables */
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+.table th { background: #f8fafc; font-weight: 600; color: #2d3748; }
+
+/* Scrollable small sections */
+.scrollbox { font-size: 12px; height: 80px; overflow-y: auto; background: #f8f9fa; padding: 4px; border-radius: 4px; }
+
+/* Responsive */
+@media (max-width: 1024px) { .status-row, .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .status-row, .dashboard-grid { grid-template-columns: 1fr; } .container { overflow: auto; height: auto; min-height: 100vh; } }

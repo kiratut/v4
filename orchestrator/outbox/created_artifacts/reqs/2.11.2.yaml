@@ -1,0 +1,13 @@
+id: '2.11.2'
+title: Расчет количества страниц и вакансий
+description: "Отправка запросов в API и получение количества страниц всех запросов, расчёт кол-ва id по всем запросам для рачёта % выполнения поиска по всем фильтрам и ожидаемого времени окончания. При превышении кол-ва id по любому запросу более 2000 (параметр - макс.глубина ответа hh), то для данных фильтров в ячейках Статус выводить текст красным шрифтом и записывать в json фильтра в поле status сообщение \"Дата-время\: Х ids > limit 2000\" и потом сохранять в filters.json. Если превышения не было, то записывать в json в поле status сообщение \"Дата-время\: Х ids\" и потом сохранять в filters.json."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_search_pagination_calculation
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

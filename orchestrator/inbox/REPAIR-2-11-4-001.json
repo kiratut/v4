@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-11-4-001",
+  "type": "generate_patch",
+  "requirement_id": "2.11.4",
+  "input_files": [
+    "core/scheduler_daemon.py",
+    "plugins/fetcher_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "task_queue.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "task-queue",
+    "scheduler-integration"
+  ],
+  "estimated_effort_hours": 7,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement task queuing system for vacancy loading including queue management, priority handling and scheduler integration",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Task queue implementation requires understanding of scheduling algorithms and priority management",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement task queuing system for vacancy loading including queue management, priority handling and scheduler integration",
+    "switch_instruction_rus": "Проверьте корректность системы очередей задач"
+  },
+  "human_notes_rus": "Реализация системы очередей для загрузки - управление приоритетами",
+  "auto_execute": true
+}

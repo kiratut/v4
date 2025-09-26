@@ -1,0 +1,11 @@
+{
+  "task_id": "TASK-ISSUE-001",
+  "status": "decomposed",
+  "created_at": "2025-09-26T16:14:02+03:00",
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Fix flaky test 'service status' by improving process detection on Windows with retry mechanism and multiple file check fallbacks",
+  "model_recommendation_reason": "Test flakiness requires careful analysis and robust retry logic implementation",
+  "artifacts": [],
+  "metrics": {},
+  "logs": ["Task decomposed by Tier-2 agent"]
+}

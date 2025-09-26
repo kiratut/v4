@@ -1,0 +1,13 @@
+id: '2.12.3'
+title: Быстрый расчет дополнительных полей
+description: Выяснить какое поле рассчитывается на основании других полей. Вроде как удаленность работы.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_full_vacancy_loading
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

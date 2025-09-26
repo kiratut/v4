@@ -1,0 +1,12 @@
+id: '2.15.3'
+title: "Сохранение сводки (CSV, UTF-8)"
+description: Экспорт аналитической сводки
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

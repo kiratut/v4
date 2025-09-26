@@ -1,0 +1,15 @@
+id: '2.5.1'
+title: Расчет показателей по логам и записям в БД
+description: "Расчет за период (с предыдущего запроса) количества уникальных id вакансий из запросов к hh API, количества загруженных версий вакансий, количества новых вакансий, кол-ва новых работодателей, кол-во версий вакансий к загрузке (по ожидающим id в очереди) и пронозное время окончания всех загрузок в очереди. Расчет средней скорости получения id и загрузки версий вакансий. Расчет кол-ва банов/каптчей hh API. Фильтрация незаконченных (с указанием id таскера) и не начатых задач."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_stats
+  - test_database_statistics_calculation
+module_paths:
+  - web/server.py
+  - core/database_v3.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.6.1'
+title: Ведение фильтров поиска вакансий
+description: "Управление поисковыми запросами в filters.json\: добавление/удаление фильтров, тестирование запросов, включение/отключение фильтров. Параметры\: per_page (default\: 100), search_period (30 дней), area (регион поиска), experience (опыт работы), employment (тип занятости), schedule (график работы), salary (зарплата от/до), text (ключевые слова). Параметры конфигурации\: filters_file_path, default_per_page, default_search_period"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_filters_file_structure
+module_paths:
+  - config/filters.json
+owner: orchestrator
+priority: 3
+version: '1.0.0'

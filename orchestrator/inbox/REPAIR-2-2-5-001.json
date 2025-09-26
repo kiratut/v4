@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-2-5-001",
+  "type": "generate_patch",
+  "requirement_id": "2.2.5",
+  "input_files": [
+    "core/database_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "db_cleanup.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "database-cleanup",
+    "indicator-records"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Implement database cleanup for indicator records older than 30 days, delete 10% of oldest records with configurable parameters",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Database cleanup requires careful SQL operations and data retention logic",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement database cleanup for indicator records older than 30 days, delete 10% of oldest records with configurable parameters",
+    "switch_instruction_rus": "Проверьте корректность очистки записей индикаторов"
+  },
+  "human_notes_rus": "Реализация очистки БД - записи индикаторов старше 30 дней",
+  "auto_execute": true
+}

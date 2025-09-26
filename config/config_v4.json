@@ -1,0 +1,154 @@
+{
+  "database": {
+    "path": "data/hh_v4.sqlite3",
+    "timeout_sec": 30,
+    "wal_mode": true,
+    "backup_enabled": true,
+    "backup_interval_hours": 24,
+    "vacuum_enabled": true
+  },
+  "task_dispatcher": {
+    "enabled": true,
+    "max_workers": 3,
+    "dynamic_scaling_enabled": false,
+    "min_workers": 1,
+    "chunk_size": 500,
+    "monitor_interval_sec": 10,
+    "default_timeout_sec": 3600,
+    "queue_max_size": 10000,
+    "health_check_interval_sec": 30,
+    "failed_task_retry_limit": 3,
+    "retry_delay_multiplier": 2.0,
+    "metrics_collection_enabled": true,
+    "metrics_retention_hours": 168,
+    "priority_queue_enabled": true,
+    "deadlock_detection_enabled": true,
+    "worker_memory_limit_mb": 512,
+    "frequency_hours": 3,
+    "frozen": true
+  },
+  "vacancy_fetcher": {
+    "rate_limit_delay": 1,
+    "request_timeout_sec": 30,
+    "retry_attempts": 3,
+    "retry_backoff_sec": 2,
+    "max_pages_per_filter": 200
+  },
+  "logging": {
+    "level": "INFO",
+    "file_enabled": true,
+    "file": "logs/app.log",
+    "max_size_mb": 100,
+    "backup_count": 5,
+    "rotation_enabled": true,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "db_enabled": true,
+    "db_table": "system_logs",
+    "db_retention_days": 30,
+    "db_level_filter": "WARNING",
+    "console_enabled": true,
+    "console_level": "INFO",
+    "structured_format": false,
+    "module_filters": {
+      "requests": "WARNING",
+      "urllib3": "ERROR"
+    }
+  },
+  "cleanup": {
+    "auto_cleanup_enabled": true,
+    "interval_hours": 24,
+    "keep_tasks_days": 7,
+    "keep_logs_days": 30
+  },
+  "api": {
+    "base_url": "https://api.hh.ru",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "max_retries": 3
+  },
+  "web_interface": {
+    "enabled": true,
+    "host": "localhost",
+    "port": 8000,
+    "auto_start": true,
+    "auto_refresh_sec": 30
+  },
+  "hosts": {
+    "host1": {
+      "name": "Primary Data Storage",
+      "description": "SQLite database for vacancy storage and versioning",
+      "enabled": true,
+      "type": "sqlite"
+    },
+    "host2": {
+      "name": "Analytics PostgreSQL",
+      "description": "PostgreSQL analytics and aggregation service",
+      "enabled": true,
+      "mock_mode": true,
+      "type": "postgresql",
+      "connection": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "hh_analytics",
+        "username": "hh_user",
+        "password": "change_me_in_production",
+        "timeout": 30
+      }
+    },
+    "host3": {
+      "name": "LLM Analysis Service",
+      "description": "AI-powered vacancy analysis and matching",
+      "enabled": true,
+      "mock_mode": true,
+      "type": "llm",
+      "connection": {
+        "api_endpoint": "http://localhost/v1",
+        "api_key": "your_api_key_here",
+        "default_model": "gpt-3.5-turbo",
+        "timeout": 30,
+        "max_tokens": 1000,
+        "temperature": 0.3
+      }
+    }
+  },
+  "system_monitoring": {
+    "enabled": true,
+    "interval_minutes": 5,
+    "cpu_threshold_percent": 80,
+    "cpu_critical_percent": 95,
+    "memory_threshold_percent": 85,
+    "memory_critical_percent": 95,
+    "disk_threshold_percent": 85,
+    "disk_critical_percent": 95,
+    "log_error_keywords": [
+      "ERROR",
+      "CRITICAL",
+      "EXCEPTION",
+      "FAILED",
+      "TIMEOUT"
+    ],
+    "log_scan_lines": 1000,
+    "health_report_format": "telegram",
+    "alert_cooldown_minutes": 30,
+    "system_info_cache_minutes": 2,
+    "network_check_enabled": true,
+    "network_test_hosts": [
+      "8.8.8.8",
+      "api.hh.ru",
+      "google.com"
+    ]
+  },
+  "telegram": {
+    "token": "YOUR_BOT_TOKEN_HERE",
+    "chat_id": "YOUR_CHAT_ID_HERE",
+    "enabled": false,
+    "alerts_enabled": true,
+    "daily_summary_enabled": true,
+    "daily_summary_time": "09:00",
+    "retry_delay_minutes": 5,
+    "message_max_length": 4096,
+    "test_message": "HH Bot v4 test message",
+    "error_threshold": 5,
+    "queue_max_size": 100
+  }
+}

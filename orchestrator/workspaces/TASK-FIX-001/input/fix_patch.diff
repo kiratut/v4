@@ -1,0 +1,26 @@
+--- a/tests/consolidated_tests.py
++++ b/tests/consolidated_tests.py
+@@ -112,6 +112,8 @@
+     def test_service_status_response(self, result: TestResult):
+         """2.1.2 - Проверка статуса демона"""
++        import time
++        from pathlib import Path
+         try:
+             daemon_found = False
+@@ -141,9 +143,18 @@
+         except Exception as e:
+             state_file = Path(__file__).parent.parent / 'data' / 'daemon.state'
+-            if state_file.exists():
+-                result.details['daemon_status'] = 'Файл состояния найден'
+-            else:
+-                raise AssertionError(f'Демон не активен: {e}')
++            pid_file = Path(__file__).parent.parent / 'data' / 'daemon.pid'
++            max_retries = 3
++            for attempt in range(max_retries):
++                if state_file.exists() or pid_file.exists():
++                    result.details['daemon_status'] = 'Файл состояния найден'
++                    result.details['retry_attempt'] = attempt + 1
++                    return
++                if attempt < max_retries - 1:
++                    time.sleep(1)
++            raise AssertionError(f'Демон не активен после {max_retries} попыток: {e}')

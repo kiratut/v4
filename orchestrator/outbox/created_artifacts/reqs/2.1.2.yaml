@@ -1,0 +1,13 @@
+id: '2.1.2'
+title: Активность демона
+description: "Формирует статус сервиса\: запущен, отвечает номер версии, время запуска в локали и в unix"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_service_status_response
+module_paths:
+  - core/scheduler_daemon.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

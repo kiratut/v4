@@ -1,0 +1,20 @@
+{
+  "policy_version": "1.0",
+  "allow_high_tier_by_default": false,
+  "high_tier_requires_approval": true,
+  "max_patch_lines": 500,
+  "max_worker_concurrency": 12,
+  "batch_size": 50,
+  "requirement_traceability_threshold": 0.95,
+  "metrics_thresholds": {
+    "tests_pass_rate": 0.98,
+    "visual_regression_fail_rate": 0.01,
+    "mean_change_size_lines": 300
+  },
+  "forbidden_paths": ["/data", "/logs"],
+  "human_channel_field": "human_notes_rus",
+  "task_schema_path": "/orchestrator/schemas/task_schema.json",
+  "manifest_schema_path": "/orchestrator/schemas/manifest_schema.json",
+  "secrets_location": "windsurf_secrets_manager",
+  "audit_log_path": "/orchestrator/logs/"
+}

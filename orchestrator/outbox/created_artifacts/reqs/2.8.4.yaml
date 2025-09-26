@@ -1,0 +1,13 @@
+id: '2.8.4'
+title: Тестирование и перебор параметров авторизации HH
+description: Цикл запросов при бане/каптче с экспоненциальной задержкой. Ротация профилей при ошибках.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_api_auth_profile_rotation
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

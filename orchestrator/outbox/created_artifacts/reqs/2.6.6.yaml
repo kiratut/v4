@@ -1,0 +1,15 @@
+id: '2.6.6'
+title: Настройки диспетчера
+description: "Параметры диспетчера задач в config_v4.json\: task_dispatcher.max_concurrent_tasks (макс одновременных задач), task_dispatcher.queue_size_limit (лимит очереди), task_dispatcher.worker_pool_size (размер пула воркеров), task_dispatcher.task_retry_attempts (попытки повтора), task_dispatcher.heartbeat_interval (интервал heartbeat), task_dispatcher.cleanup_interval (интервал очистки), task_dispatcher.timeout_check_interval (проверка таймаутов). Параметры конфигурации\: max_concurrent_tasks, queue_size_limit, worker_pool_size, task_retry_attempts"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_task_manager_basic_operations
+module_paths:
+  - core/db_log_handler.py
+  - web/server.py
+  - tests/consolidated_tests.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.6.9'
+title: Настройки запросов к LLM
+description: "Параметры LLM API в config_v4.json\: llm.provider (OpenAI/Anthropic/Local), llm.model (модель ИИ), llm.api_key (ключ API), llm.base_url (базовый URL), llm.max_tokens (макс токенов), llm.temperature (температура), llm.timeout_seconds (таймаут запроса), llm.retry_attempts (попытки повтора), llm.quota_threshold (порог квоты), llm.enabled (включение ИИ анализа). Параметры конфигурации\: llm_provider, llm_model, llm_api_key, llm_max_tokens, llm_temperature"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_host3_client_stub
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.6.8'
+title: Настройки самодиагностики
+description: "Пороговые значения самодиагностики в config_v4.json\: health_check.cpu_threshold_percent (порог CPU), health_check.memory_threshold_percent (порог RAM), health_check.disk_threshold_percent (порог диска), health_check.check_interval_minutes (интервал проверки), health_check.alert_cooldown_minutes (задержка алертов), health_check.stale_data_minutes (устаревшие данные), health_check.critical_thresholds (критические пороги). Параметры конфигурации\: cpu_threshold, memory_threshold, disk_threshold, check_interval, alert_cooldown"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_system_health_check
+module_paths:
+  - core/scheduler_daemon.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

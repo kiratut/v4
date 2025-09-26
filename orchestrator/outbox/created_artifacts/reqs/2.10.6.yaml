@@ -1,0 +1,13 @@
+id: '2.10.6'
+title: Расчет статистики
+description: Аналитические запросы
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_database_statistics_calculation
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

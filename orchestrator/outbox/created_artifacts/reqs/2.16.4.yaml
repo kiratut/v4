@@ -1,0 +1,11 @@
+id: '2.16.4'
+title: Отправка откликов в API HH
+description: Автоматическая подача откликов
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

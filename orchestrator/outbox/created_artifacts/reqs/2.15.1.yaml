@@ -1,0 +1,12 @@
+id: '2.15.1'
+title: Отбор по критериям (ручной процесс в БД)
+description: "SQL-отбор по статусам/меткам в БД"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

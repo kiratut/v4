@@ -1,0 +1,13 @@
+id: '2.4.1'
+title: Запуск и останов демона
+description: Команды запуска и останова демона. Сохранение в параметрах времени последнего события, статуса события и id процесса ОС запуска/остановки демона. Проверка активности демона и закрытия перед новым запуском. Сохранение в лог, в т.ч. диагностику исключений в Error событиях.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_dispatcher_start_command
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

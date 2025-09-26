@@ -1,0 +1,12 @@
+id: '2.2.1'
+title: Очистка старых логов
+description: "Файловые логи >1 суток\: сжатие в суточный архив. Периодичность - параметр. Логи в БД >30 суток или более 10000 строк - удаление. Макс.длительность и макс.строк - параметры."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

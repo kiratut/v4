@@ -1,0 +1,12 @@
+id: '2.1.5'
+title: Активность LLM API
+description: "Формирует статус линка для каждого профиля LLM\: активный/деактивирован, пинг, номер версии, ответ сервера."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

@@ -1,0 +1,32 @@
+{
+  "task_id": "TASK-REQ-2-5-2",
+  "type": "generate_tests",
+  "requirement_id": "2.5.2",
+  "input_files": [
+    "core/scheduler_daemon.py"
+  ],
+  "expected_outputs": [
+    "test_task_dispatcher.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "task-scheduling",
+    "dispatcher-logic"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create comprehensive tests for task dispatcher including scheduling logic and task execution flow",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Task dispatcher testing requires understanding of scheduling algorithms and execution flow",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive tests for task dispatcher including scheduling logic and task execution flow",
+    "switch_instruction_rus": "Проверьте корректность тестирования диспетчера задач"
+  },
+  "human_notes_rus": "Тесты диспетчера задач - критично для планировщика",
+  "auto_execute": false
+}

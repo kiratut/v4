@@ -1,0 +1,12 @@
+id: '2.1.7'
+title: Сжатие самодиагностики для отправки в Telegram
+description: Упаковка отчёта самодиагностки в короткое сообщение и вложение.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_telegram_critical_alerts
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

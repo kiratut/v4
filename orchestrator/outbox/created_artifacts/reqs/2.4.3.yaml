@@ -1,0 +1,13 @@
+id: '2.4.3'
+title: Периодическая диагностика
+description: "Раз в 5 минут (параметр) вызывается самодиагностика (п.2.1) и выводится на панель, записывается в лог. При наличии тревог и предупреждений - формируется сообщение и отправляется в телеграмм."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_system_health_task
+module_paths:
+  - core/scheduler_daemon.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

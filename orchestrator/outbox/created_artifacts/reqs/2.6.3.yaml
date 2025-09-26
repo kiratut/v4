@@ -1,0 +1,13 @@
+id: '2.6.3'
+title: Настройки отображения панели
+description: "Параметры панели в config_v4.json\: dashboard.refresh_interval_ms (частота обновления), dashboard.port (порт веб-сервера), dashboard.host (адрес привязки), dashboard.theme (тема оформления), dashboard.cards_per_row (карточек в ряду), dashboard.show_unix_time (показывать Unix время), dashboard.stale_data_color (цвет устаревших данных). Параметры конфигурации\: dashboard_refresh_interval, dashboard_port, dashboard_host, dashboard_theme"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - config/config_v4.json
+  - config/dashboard_layout.json
+owner: orchestrator
+priority: 3
+version: '1.0.0'

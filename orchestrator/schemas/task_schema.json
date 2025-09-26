@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Orchestrator Task Schema",
+  "type": "object",
+  "required": [
+    "task_id",
+    "type",
+    "requirement_id",
+    "input_files",
+    "expected_outputs",
+    "priority",
+    "suggested_model",
+    "suggested_prompt",
+    "model_recommendation"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Za-z0-9_\\-]+$" },
+    "type": { "type": "string", "enum": ["generate_patch", "generate_tests", "validate_schema", "visual_check", "apply_fix", "decompose_requirement", "other"] },
+    "requirement_id": { "type": "string" },
+    "input_files": { "type": "array", "items": { "type": "string" } },
+    "expected_outputs": { "type": "array", "items": { "type": "string" } },
+    "priority": { "type": "string", "enum": ["P0", "P1", "P2"] },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "estimated_effort_hours": { "type": "number", "minimum": 0 },
+    "suggested_model": { "type": "string" },
+    "suggested_prompt": { "type": "string" },
+    "require_human_approval": { "type": "boolean" },
+    "model_recommendation": {
+      "type": "object",
+      "required": [
+        "suggested_model",
+        "model_recommendation_reason",
+        "estimated_complexity",
+        "suggested_prompt",
+        "switch_instruction_rus"
+      ],
+      "properties": {
+        "suggested_model": { "type": "string" },
+        "model_recommendation_reason": { "type": "string" },
+        "estimated_complexity": { "type": "string", "enum": ["low", "medium", "high"] },
+        "alternative_models": { "type": "array", "items": { "type": "string" } },
+        "require_human_switch": { "type": "boolean" },
+        "suggested_prompt": { "type": "string" },
+        "switch_instruction_rus": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "human_notes_rus": { "type": "string" }
+  },
+  "additionalProperties": false
+}

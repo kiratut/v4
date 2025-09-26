@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-12-4-001",
+  "type": "generate_patch",
+  "requirement_id": "2.12.4",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "analytics_calculator.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "analytics-fields",
+    "data-enrichment"
+  ],
+  "estimated_effort_hours": 6,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement analytical field calculation system for new vacancy versions including data enrichment and derived metrics",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Analytics calculation requires understanding of data processing and metric derivation algorithms",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement analytical field calculation system for new vacancy versions including data enrichment and derived metrics",
+    "switch_instruction_rus": "Проверьте корректность расчета аналитических полей"
+  },
+  "human_notes_rus": "Реализация расчета дополнительных аналитических полей для новых версий",
+  "auto_execute": false
+}

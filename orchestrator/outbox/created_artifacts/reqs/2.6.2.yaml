@@ -1,0 +1,13 @@
+id: '2.6.2'
+title: Настройки отправки в Telegram
+description: "Параметры API Телеграмм в config_v4.json\: telegram.bot_token (токен бота), telegram.chat_id (ID чата), telegram.enabled (вкл/выкл уведомлений), telegram.alerts_enabled (вкл/выкл тревог), telegram.test_message (тестовое сообщение), telegram.retry_delay_minutes (задержка при бане), telegram.max_message_length (макс длина сообщения). Параметры конфигурации\: telegram_bot_token, telegram_chat_id, telegram_enabled, telegram_alerts_enabled"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_telegram_critical_alerts
+module_paths:
+  - config/config_v4.json
+owner: orchestrator
+priority: 2
+version: '1.0.0'

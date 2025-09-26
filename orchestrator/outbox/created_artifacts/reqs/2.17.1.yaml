@@ -1,0 +1,13 @@
+id: '2.17.1'
+title: Авария API HH.ru
+description: Восстановление после 5xx/timeout с экспоненциальной задержкой
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_hh_api_outage_recovery
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

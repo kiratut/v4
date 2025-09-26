@@ -1,0 +1,12 @@
+id: '2.16.6'
+title: "Отправка сводки по откликам в Telegram с вложением расширенной сводки со сжатыми вакансиями и письмами [Приоритет 3]"
+description: Отчет о поданных откликах
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_telegram_daily_summary
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

@@ -1,0 +1,23 @@
+{
+  "task_id": "REPAIR-2-8-4-001",
+  "status": "completed",
+  "summary": "Added regression tests covering HH auth rotation fallback scenarios (UA downgrade, auth header drop, provider rotation) and backoff timing. Generated unified diff and execution log, all new tests pass.",
+  "requirements": [
+    {
+      "id": "REQ-2.8.4",
+      "description": "HH authorization rotation and fallback behaviour is verified with automated tests",
+      "status": "covered"
+    }
+  ],
+  "tests": [
+    {
+      "name": "pytest -q orchestrator/workspaces/REPAIR-2-8-4-001/output/test_api_auth_profile_rotation.py",
+      "result": "passed"
+    }
+  ],
+  "artifacts": {
+    "diff": "orchestrator/workspaces/REPAIR-2-8-4-001/output/patch.diff",
+    "tests": "orchestrator/workspaces/REPAIR-2-8-4-001/output/test_api_auth_profile_rotation.py",
+    "log": "orchestrator/logs/REPAIR-2-8-4-001.log"
+  }
+}

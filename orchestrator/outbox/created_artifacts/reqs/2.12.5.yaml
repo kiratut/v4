@@ -1,0 +1,12 @@
+id: '2.12.5'
+title: Удаление скачанных ID из очереди
+description: После загрузки в tt вакансий, удалить задачи из очереди.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

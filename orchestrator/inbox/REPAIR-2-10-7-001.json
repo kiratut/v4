@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-7-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.7",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_database_cleanup_old_data.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "data-deletion",
+    "cleanup-safety"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create tests for database deletion operations including safe data removal, cleanup validation and integrity preservation",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Deletion testing requires understanding of data safety and integrity validation",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for database deletion operations including safe data removal, cleanup validation and integrity preservation",
+    "switch_instruction_rus": "Проверьте корректность тестирования удаления данных БД"
+  },
+  "human_notes_rus": "Тесты операций удаления БД - безопасное удаление старых данных",
+  "auto_execute": true
+}

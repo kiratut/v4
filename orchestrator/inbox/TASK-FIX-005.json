@@ -1,0 +1,33 @@
+{
+  "task_id": "TASK-FIX-005",
+  "type": "apply_fix",
+  "requirement_id": "2.6.9",
+  "input_files": [
+    "core/host3_client.py"
+  ],
+  "expected_outputs": [
+    "host3_client.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "apply-unified-diff",
+    "llm-configuration",
+    "timeout-handling"
+  ],
+  "estimated_effort_hours": 1,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Apply the provided unified diff patch to add timeout, retry attempts and quota configuration to LLM client",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Simple patch application with configuration additions",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "grok-code-fast-1"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Apply the provided unified diff patch to add timeout, retry attempts and quota configuration to LLM client",
+    "switch_instruction_rus": "Примените патч для добавления timeout и quota в LLM клиент"
+  },
+  "human_notes_rus": "Применить готовый патч для конфигурации LLM клиента",
+  "auto_execute": true
+}

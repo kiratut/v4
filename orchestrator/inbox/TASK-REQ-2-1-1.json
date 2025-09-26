@@ -1,0 +1,32 @@
+{
+  "task_id": "TASK-REQ-2-1-1",
+  "type": "generate_tests",
+  "requirement_id": "2.1.1",
+  "input_files": [
+    "core/scheduler_daemon.py"
+  ],
+  "expected_outputs": [
+    "test_resource_monitoring.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "assert-thresholds",
+    "system-metrics"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create comprehensive resource monitoring tests that verify CPU/RAM/Disk threshold detection and alert generation",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "System monitoring tests require accurate metric simulation and threshold validation",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive resource monitoring tests that verify CPU/RAM/Disk threshold detection and alert generation",
+    "switch_instruction_rus": "Убедитесь что тесты корректно симулируют высокую нагрузку"
+  },
+  "human_notes_rus": "Тесты для контроля ресурсов системы - критично для мониторинга",
+  "auto_execute": false
+}

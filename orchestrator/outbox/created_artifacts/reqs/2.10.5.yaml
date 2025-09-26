@@ -1,0 +1,13 @@
+id: '2.10.5'
+title: Экспорт в файл
+description: Выгрузка данных
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_excel_export_user_friendly
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

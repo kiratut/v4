@@ -1,0 +1,53 @@
+{
+  "profiles": [
+    {
+      "name": "default",
+      "enabled": true,
+      "user_agent": "HH-User-Agent",
+      "headers": {
+        "Authorization": "Bearer USERNRFLBMGL8OPF7OL5SDSDCHAM305BTUAV6ABF5LIIGLDC394PN042FCGBKADO"
+      }
+    }
+  ],
+  "auth_providers": {
+    "primary_app": {
+      "role": "primary",
+      "description": "Основной токен приложения",
+      "type": "access_token",
+      "token": "USERNRFLBMGL8OPF7OL5SDSDCHAM305BTUAV6ABF5LIIGLDC394PN042FCGBKADO",
+      "priority": 2,
+      "allowed_for": ["download"],
+      "risk_level": "medium"
+    },
+    "plugin_personal": {
+      "role": "plugin",
+      "description": "Персональный токен для плагинов по вакансиям",
+      "type": "access_token", 
+      "token": "USERNRFLBMGL8OPF7OL5SDSDCHAM305BTUAV6ABF5LIIGLDC394PN042FCGBKADO",
+      "priority": 99,
+      "allowed_for": ["plugins"],
+      "risk_level": "low"
+    },
+    "oauth_backup": {
+      "role": "backup", 
+      "description": "OAuth резервная авторизация",
+      "type": "oauth",
+      "client_id": "HS0AJJORAHP0IOU4NKJV6HEJNSLLBEIALR7B321PD9Q32OMLQRUBS74STQTHD11M",
+      "client_secret": "MOE94UH7H1VSAORIHQA83IM6N5AIICNFEAQ0GF7M154ICL1KGUBUNPVFMJAAFK71",
+      "priority": 1,
+      "allowed_for": ["download"],
+      "risk_level": "low"
+    }
+  },
+  "rotation_settings": {
+    "delay_increase_steps": [1, 10, 30],
+    "max_delay_before_switch": 60,
+    "fallback_return_timeout": 300,
+    "measurements_per_delay": 10
+  },
+  "usage_rules": {
+    "primary_app": "Основные операции приложения",
+    "plugin_personal": "Только ответы работодателям, плагины; не использовать для загрузки вакансий",
+    "oauth_backup": "Альтернативная авторизация для скачивания вакансий"
+  }
+}

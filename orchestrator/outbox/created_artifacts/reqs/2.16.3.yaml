@@ -1,0 +1,12 @@
+id: '2.16.3'
+title: Сохранение писем (редактирование вручную в БД)
+description: Хранение и редактирование писем
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-10-2-001",
+  "type": "generate_tests",
+  "requirement_id": "2.10.2",
+  "input_files": [
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "test_database_optimization.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "performance-testing",
+    "query-benchmarking"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create database performance testing suite including query benchmarking, speed measurement and optimization validation",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Performance testing requires understanding of benchmarking methods and database optimization",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create database performance testing suite including query benchmarking, speed measurement and optimization validation",
+    "switch_instruction_rus": "Проверьте корректность тестирования производительности БД"
+  },
+  "human_notes_rus": "Тесты замера скорости БД - бенчмаркинг запросов, измерение производительности",
+  "auto_execute": true
+}

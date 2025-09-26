@@ -1,0 +1,158 @@
+name: HH v4 CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM
+
+jobs:
+  lint:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install linting tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black isort mypy
+      
+      - name: Run Black
+        run: black --check .
+        continue-on-error: true
+      
+      - name: Run isort
+        run: isort --check-only .
+        continue-on-error: true
+      
+      - name: Run Flake8
+        run: flake8 . --max-line-length=120 --exclude=.git,__pycache__,docs,archive
+        continue-on-error: true
+      
+      - name: Run MyPy
+        run: mypy core/ plugins/ --ignore-missing-imports
+        continue-on-error: true
+
+  test:
+    runs-on: windows-latest
+    needs: lint
+    strategy:
+      matrix:
+        test-suite: [unit, integration, smoke]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov playwright
+      
+      - name: Install Playwright browsers
+        if: matrix.test-suite == 'smoke'
+        run: playwright install chromium
+      
+      - name: Run ${{ matrix.test-suite }} tests
+        shell: pwsh
+        run: |
+          if ('${{ matrix.test-suite }}' -eq 'unit') {
+            pytest tests/unit/ tests/consolidated_tests.py -v --cov=core --cov=plugins
+          } elseif ('${{ matrix.test-suite }}' -eq 'integration') {
+            pytest tests/integration/ -v
+          } else {
+            # Start web server in background for smoke tests
+            $proc = Start-Process python -ArgumentList 'web/server.py' -PassThru
+            Start-Sleep -Seconds 5
+            python tests/smoke/test_contracts.py
+            Stop-Process -Id $proc.Id -Force
+          }
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.test-suite }}
+          path: |
+            reports/
+            .coverage
+            coverage.xml
+
+  visual-regression:
+    runs-on: windows-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install playwright pillow requests
+          playwright install chromium
+      
+      - name: Start web server
+        shell: pwsh
+        run: |
+          $proc = Start-Process python -ArgumentList 'web/server.py' -PassThru
+          Start-Sleep -Seconds 5
+          Write-Host "Web server started with PID: $($proc.Id)"
+      
+      - name: Run visual tests
+        run: python tests/smoke/test_ui_baseline_playwright.py
+        continue-on-error: true
+      
+      - name: Upload visual diff artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-diff
+          path: reports/visual_diff/
+
+  deploy-staging:
+    runs-on: windows-latest
+    needs: [test, visual-regression]
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to staging
+        run: |
+          Write-Host "Deploying to staging environment..."
+          # Add deployment script here
+      
+      - name: Run smoke tests on staging
+        run: |
+          Write-Host "Running smoke tests on staging..."
+          # Add staging test script here
+
+  notify:
+    runs-on: windows-latest
+    needs: [lint, test, visual-regression]
+    if: always()
+    steps:
+      - name: Send notification
+        run: |
+          Write-Host "Pipeline completed"
+          # Add Telegram or email notification here

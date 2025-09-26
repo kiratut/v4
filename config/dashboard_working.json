@@ -1,0 +1,518 @@
+{
+  "dashboard_config": {
+    "title": "HH v4 Control Panel",
+    "refresh_interval_ms": 3000,
+    "last_updated": "2025-09-24T12:45:00+03:00",
+    
+    "header": {
+      "title": "HH v4 Control Panel",
+      "version": "v4.00 • 24.09.2025 12:45",
+      "refresh_button": {
+        "text": "🔄 Refresh",
+        "action": "manualRefresh()",
+        "tooltip": "Обновить все показатели"
+      },
+      "last_refresh": {
+        "id": "lastRefresh",
+        "format": "HH:mm:ss"
+      }
+    },
+
+    "status_row": {
+      "cards": [
+        {
+          "id": "system_health",
+          "title": "System Health",
+          "subtitle": "Calculating...",
+          "data_source": "/api/stats/system_health",
+          "css_class": "status-card",
+          "font_size": "14px",
+          "color_scheme": {
+            "good": "#28a745",
+            "warning": "#ffc107", 
+            "critical": "#dc3545"
+          }
+        },
+        {
+          "id": "daemon_status", 
+          "title": "Daemon Status",
+          "value_id": "daemonStatus",
+          "value": "Checking...",
+          "unix_time_id": "daemonUnixTime",
+          "data_source": "/api/daemon/status",
+          "position": {"x": 280, "y": 10},
+          "size": {"width": 250, "height": 80}
+        },
+        {
+          "id": "tasks_queue",
+          "title": "Tasks Queue", 
+          "value_id": "taskStats",
+          "value": "Loading...",
+          "data_source": "/api/daemon/tasks",
+          "position": {"x": 540, "y": 10},
+          "size": {"width": 200, "height": 80}
+        },
+        {
+          "id": "hh_api",
+          "title": "HH API",
+          "value_id": "apiHealth", 
+          "value": "Checking...",
+          "data_source": "/api/stats/api_status",
+          "position": {"x": 750, "y": 10},
+          "size": {"width": 180, "height": 80}
+        },
+        {
+          "id": "test_status",
+          "title": "Tests",
+          "subtitle": "Success Rate & Last Run",
+          "value_id": "testSuccessRate",
+          "value": "0%",
+          "data_source": "/api/tests/status",
+          "position": {"x": 940, "y": 10},
+          "size": {"width": 160, "height": 80},
+          "extra_elements": [
+            {
+              "id": "testLastRun",
+              "text": "Never",
+              "style": "font-size: 10px; opacity: 0.8; margin-top: 5px;"
+            }
+          ]
+        }
+      ]
+    },
+
+    "main_grid": {
+      "columns": 4,
+      "gap": "8px",
+      "margin": {"top": "100px", "left": "10px", "right": "10px"},
+      "cards": [
+        {
+          "id": "system_resources",
+          "title": "System Resources & Controls",
+          "position": 1,
+          "width": 1,
+          "coordinates": {"x": 10, "y": 120, "width": 300, "height": 450},
+          "colors": {
+            "background": "#ffffff",
+            "border": "#dee2e6",
+            "header": "#f8f9fa"
+          },
+          "fonts": {
+            "title": {"size": "16px", "weight": "600", "family": "Arial, sans-serif"},
+            "text": {"size": "12px", "weight": "normal", "family": "Arial, sans-serif"}
+          },
+          "content": {
+            "status_display": {
+              "text": "Systems Loading...",
+              "color": "#007bff",
+              "last_check": "Initializing...",
+              "data_binding": {
+                "text_source": "system.status",
+                "color_source": "system.health_color",
+                "check_source": "system.last_check_time"
+              }
+            },
+            "actions": [
+              {
+                "text": "▶️ Start Daemon",
+                "action": "startSystem()",
+                "style": "success",
+                "tooltip": "Запустить демон планировщика",
+                "api_endpoint": "/api/daemon/start",
+                "confirm": false,
+                "position": {"row": 1, "col": 1}
+              },
+              {
+                "text": "⏹️ Stop Daemon", 
+                "action": "stopSystem()",
+                "style": "danger",
+                "tooltip": "Остановить демон планировщика",
+                "api_endpoint": "/api/daemon/stop",
+                "confirm": true,
+                "position": {"row": 1, "col": 2}
+              },
+              {
+                "text": "🧪 Run Tests",
+                "action": "runTests()",
+                "style": "info",
+                "tooltip": "Запустить тестирование системы",
+                "api_endpoint": "/api/tests/run",
+                "confirm": false,
+                "position": {"row": 2, "col": 1}
+              },
+              {
+                "text": "📋 Test Details",
+                "action": "showTestDetails()",
+                "style": "secondary", 
+                "tooltip": "Показать детальные результаты тестов",
+                "api_endpoint": "/api/tests/details",
+                "confirm": false,
+                "position": {"row": 2, "col": 2}
+              }
+            ],
+            "activity_log": {
+              "height": "80px",
+              "overflow": "auto",
+              "font_family": "Courier New, monospace",
+              "font_size": "11px",
+              "background": "#f8f9fa",
+              "entries": [
+                "12:45 🔄 Panel initialized",
+                "12:45 📊 Checking system status...", 
+                "12:45 🔗 Connecting to APIs..."
+              ],
+              "data_source": "/api/logs/recent",
+              "max_entries": 10
+            },
+            
+            "config_editor": {
+              "title": "Config Editor (config_v4.json)",
+              "height": "180px",
+              "width": "100%",
+              "editor_type": "json",
+              "config_file": "config/config_v4.json",
+              "api_read": "/api/config/read",
+              "api_write": "/api/config/write",
+              "controls": [
+                {
+                  "text": "📖 Read",
+                  "action": "readConfigFromDisk()",
+                  "style": "primary",
+                  "tooltip": "Загрузить актуальный config_v4.json",
+                  "position": {"col": 1}
+                },
+                {
+                  "text": "💾 Save", 
+                  "style": "success",
+                  "tooltip": "Сохранить изменения в config_v4.json",
+                  "position": {"col": 2}
+                },
+                {
+                "text": "🔄 Reset",
+                "action": "resetConfigEditor()", 
+                "style": "secondary",
+                "tooltip": "Сбросить изменения",
+                "position": {"col": 3}
+              },
+              {
+                "text": "🧪 Run Tests",
+                "action": "runTests()",
+                "style": "info", 
+                "tooltip": "Запустить полный набор тестов",
+                "position": {"col": 4}
+              },
+              {
+                "text": "📋 Test Details",
+                "action": "showTestDetails()",
+                "style": "secondary",
+                "tooltip": "Показать детальные результаты тестов",
+                "position": {"col": 5}
+              }
+            ],
+            
+            "test_status_display": {
+              "success_rate": {
+                "label": "Test Success Rate:",
+                "value_id": "testSuccessRate",
+                "value": "0%",
+                "data_source": "/api/tests/status",
+                "color_mapping": {
+                  "good": "> 80%",
+                  "warning": "60-80%", 
+                  "critical": "< 60%"
+                }
+              },
+              "last_run": {
+                "label": "Last Test Run:",
+                "value_id": "testLastRun", 
+                "value": "Never",
+                "data_source": "/api/tests/status",
+                "format": "datetime"
+              }
+            },
+            
+            "app_log_display": {
+              "title": "Application Log (app.log - last 100 lines):",
+              "height": "120px",
+              "overflow": "auto",
+              "font_family": "Courier New, monospace",
+              "font_size": "10px",
+              "background": "#f8f9fa",
+              "data_source": "/api/logs/app",
+              "refresh_interval": 10000,
+              "max_lines": 100,
+              "auto_scroll": true
+            },
+              "editor_options": {
+                "theme": "default",
+                "mode": "json",
+                "line_numbers": false,
+                "auto_format": true,
+                "font_size": "11px",
+                "font_family": "Courier New, monospace"
+              }
+            }
+          }
+        },
+        
+        {
+          "id": "filters_schedule",
+          "title": "Filters & Schedule Control", 
+          "position": 2,
+          "width": 1,
+          "coordinates": {"x": 320, "y": 120, "width": 300, "height": 450},
+          "content": {
+            "schedule_control": {
+              "frequency": {
+                "label": "Load Frequency (hours):",
+                "input_id": "loadFrequency",
+                "value": 1,
+                "min": 0,
+                "max": 24,
+                "tooltip": "Частота автозагрузок (0 = отключено)",
+                "api_endpoint": "/api/schedule/frequency",
+                "validation": {"type": "integer", "range": [0, 24]}
+              },
+              "next_load": {
+                "label": "Next Scheduled Load:",
+                "value_id": "nextLoadTime",
+                "value": "Calculating...",
+                "data_source": "/api/schedule/next"
+              }
+            },
+            
+            "work_cycle": {
+              "title": "🔄 Current Work Cycle:",
+              "status_id": "workCycleStatus",
+              "status": "Checking daemon...",
+              "phase_id": "workCyclePhase",
+              "phase": "Initializing...",
+              "eta_id": "workCycleEta",
+              "eta": "Unknown",
+              "data_source": "/api/daemon/work_cycle"
+            },
+            
+            "filters_table": {
+              "height": "200px",
+              "overflow": "auto", 
+              "columns": ["✓", "Type", "Status", "Query"],
+              "column_widths": ["30px", "50px", "60px", "*"],
+              "summary": {
+                "total_id": "totalFilters",
+                "active_id": "activeFilters",
+                "test_id": "testFilters",
+                "format": "Total: {total}, Active: {active}, Test: {test}"
+              },
+              "controls": [
+                {
+                  "text": "✅ All ON",
+                  "action": "toggleAllFilters(true)",
+                  "tooltip": "Включить все фильтры",
+                  "api_endpoint": "/api/filters/toggle-all"
+                },
+                {
+                  "text": "❌ All OFF", 
+                  "action": "toggleAllFilters(false)",
+                  "tooltip": "Выключить все фильтры",
+                  "api_endpoint": "/api/filters/toggle-all"
+                },
+                {
+                  "text": "🔄 Invert",
+                  "action": "invertFilters()",
+                  "tooltip": "Инвертировать активные/неактивные фильтры",
+                  "api_endpoint": "/api/filters/invert"
+                },
+                {
+                  "text": "🚀 Load Now",
+                  "action": "loadNowSelected()",
+                  "tooltip": "Запустить загрузку активных фильтров",
+                  "api_endpoint": "/api/filters/load-now"
+                }
+              ],
+              "data_source": "/api/filters/list",
+              "refresh_interval": 5000
+            }
+          }
+        },
+
+        {
+          "id": "tasks_queue_detail",
+          "title": "Tasks Queue Detail",
+          "position": 3, 
+          "width": 1,
+          "coordinates": {"x": 630, "y": 120, "width": 300, "height": 450},
+          "content": {
+            "statistics": {
+              "layout": "grid",
+              "grid_columns": 2,
+              "items": {
+                "vacancies": {
+                  "label": "Total Vacancies:",
+                  "value_id": "vacancyCount",
+                  "value": "Loading...",
+                  "data_source": "/api/stats/vacancies_count",
+                  "format": "number"
+                },
+                "employers": {
+                  "label": "Total Employers:",
+                  "value_id": "employerCount", 
+                  "value": "Loading...",
+                  "data_source": "/api/stats/employers_count", 
+                  "format": "number"
+                },
+                "queue_eta": {
+                  "label": "Queue ETA:",
+                  "value_id": "queueEta",
+                  "value": "Calculating...",
+                  "data_source": "/api/daemon/queue_eta",
+                  "format": "duration"
+                }
+              }
+            },
+            
+            "tasks_table": {
+              "title": "Active Tasks:",
+              "unix_time": {
+                "label": "Last Update Unix:",
+                "value_id": "tasksUnixTime",
+                "value": "0",
+                "data_source": "/api/daemon/tasks/active.summary.unix_time"
+              },
+              "height": "250px",
+              "overflow": "auto",
+              "columns": ["№", "Worker", "Task Type", "Status"],
+              "column_widths": ["40px", "60px", "100px", "*"],
+              "data_source": "/api/daemon/tasks/active",
+              "data_mapping": {
+                "rows": "tasks",
+                "columns": ["num", "worker", "task_type", "status"]
+              },
+              "empty_message": "No active tasks",
+              "refresh_interval": 2000
+            }
+          }
+        },
+
+        {
+          "id": "workers_status",
+          "title": "Workers Management",
+          "position": 4,
+          "width": 1,
+          "coordinates": {"x": 940, "y": 120, "width": 300, "height": 450},
+          "content": {
+            "statistics": {
+              "layout": "vertical",
+              "items": {
+                "active_workers": {
+                  "label": "Active Workers:",
+                  "value_id": "activeWorkers", 
+                  "value": "0/5",
+                  "data_source": "/api/workers/status.active_workers"
+                },
+                "queue_size": {
+                  "label": "Pending Tasks:",
+                  "value_id": "queueSize",
+                  "value": "0",
+                  "data_source": "/api/daemon/tasks.summary.pending"
+                },
+                "avg_speed": {
+                  "label": "Processing Speed:",
+                  "value_id": "avgSpeed",
+                  "value": "0/min",
+                  "data_source": "/api/stats/processing_speed"
+                }
+              }
+            },
+            
+            "controls": [
+              {
+                "text": "❄️ Freeze Workers",
+                "action": "freezeWorkers()",
+                "style": "warning",
+                "tooltip": "Заморозить работу всех воркеров",
+                "api_endpoint": "/api/workers/freeze",
+                "confirm": true,
+                "confirm_text": "Заморозить работу всех воркеров?"
+              },
+              {
+                "text": "🗑️ Clear Queue",
+                "action": "clearQueue()", 
+                "style": "danger",
+                "tooltip": "Очистить очередь pending задач",
+                "api_endpoint": "/api/queue/clear",
+                "confirm": true,
+                "confirm_text": "Очистить очередь задач со статусом pending?"
+              }
+            ],
+            
+            "worker_tasks": {
+              "title": "Worker Tasks:",
+              "height": "120px",
+              "overflow": "auto",
+              "font_family": "Courier New, monospace",
+              "font_size": "11px",
+              "data_source": "/api/workers/status",
+              "data_mapping": {
+                "list": "workers",
+                "item_format": "{worker_id}: {running} running, {pending} pending"
+              },
+              "empty_message": "No worker data",
+              "refresh_interval": 3000
+            }
+          }
+        }
+      ]
+    },
+
+    "css_classes": {
+      "container": "container",
+      "status_row": "status-row", 
+      "dashboard_grid": "dashboard-grid",
+      "card": "card",
+      "card_header": "card-header",
+      "card_title": "card-title",
+      "status_card": "status-card",
+      "status_title": "status-title", 
+      "status_value": "status-value",
+      "scrollbox": "scrollbox"
+    },
+
+    "api_endpoints": {
+      "system_health": "/api/stats/system_health",
+      "daemon_status": "/api/daemon/status",
+      "daemon_tasks": "/api/daemon/tasks", 
+      "daemon_tasks_active": "/api/daemon/tasks/active",
+      "api_status": "/api/stats/api_status",
+      "filters_list": "/api/filters/list",
+      "filters_toggle": "/api/filters/toggle-all",
+      "filters_invert": "/api/filters/invert",
+      "workers_status": "/api/workers/status",
+      "workers_freeze": "/api/workers/freeze",
+      "queue_clear": "/api/queue/clear",
+      "config_read": "/api/config/read",
+      "config_write": "/api/config/write",
+      "schedule_frequency": "/api/schedule/frequency"
+    },
+
+    "behavior": {
+      "daemon_not_running": {
+        "mode": "degraded",
+        "show_warning": true,
+        "warning_message": "⚠️ Демон не запущен. Некоторые функции недоступны.",
+        "warning_color": "#ffc107",
+        "disabled_features": ["workers_freeze", "queue_clear", "schedule_control"],
+        "fallback_values": {
+          "daemon_status": "N/A - Daemon not running",
+          "tasks_count": "0 (daemon stopped)",
+          "workers_active": "0/0 (daemon stopped)"
+        }
+      },
+      "error_handling": {
+        "api_timeout": 5000,
+        "retry_count": 3,
+        "error_display": "inline",
+        "fallback_message": "Data unavailable"
+      }
+    }
+  }
+}

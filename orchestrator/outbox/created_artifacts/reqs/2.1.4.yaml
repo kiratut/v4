@@ -1,0 +1,13 @@
+id: '2.1.4'
+title: Активность удаленной БД
+description: "Формирует статус линка\: активна/деактивирована, запущена/остановлена, пинг, номер версии, время запуска, занятый объём удаленной БД."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_database_integrity_check
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

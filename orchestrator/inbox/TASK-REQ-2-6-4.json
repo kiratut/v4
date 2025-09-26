@@ -1,0 +1,32 @@
+{
+  "task_id": "TASK-REQ-2-6-4",
+  "type": "generate_tests",
+  "requirement_id": "2.6.4",
+  "input_files": [
+    "config/config_v4.json"
+  ],
+  "expected_outputs": [
+    "test_service_config.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "config-validation",
+    "service-params"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for service configuration validation including parameter checking and default values",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Configuration testing requires validation of JSON schema and parameter correctness",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for service configuration validation including parameter checking and default values",
+    "switch_instruction_rus": "Убедитесь что тесты проверяют все конфигурационные параметры"
+  },
+  "human_notes_rus": "Тесты конфигурации сервиса - критично для настройки",
+  "auto_execute": false
+}

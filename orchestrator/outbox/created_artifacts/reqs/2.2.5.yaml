@@ -1,0 +1,11 @@
+id: '2.2.5'
+title: Очистка БД
+description: "Записи индикаторов > 30 дней\: удаление 10% самых старых записей. Макс кол-во дней - параметр."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 2
+version: '1.0.0'

@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-2-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.2.3",
+  "input_files": [
+    "core/database_v4.py",
+    "data/production.db"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "vacancy_archival.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "database-archival",
+    "export-compression"
+  ],
+  "estimated_effort_hours": 8,
+  "suggested_model": "sonnet-4",
+  "suggested_prompt": "Implement vacancy archival system including 30-day age filter, export compression, field cleanup keeping only id and version",
+  "model_recommendation": {
+    "suggested_model": "sonnet-4",
+    "model_recommendation_reason": "Database archival requires complex SQL operations and data transformation logic",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-4"
+    ],
+    "require_human_switch": true,
+    "suggested_prompt": "Implement vacancy archival system including 30-day age filter, export compression, field cleanup keeping only id and version",
+    "switch_instruction_rus": "Проверьте корректность архивации вакансий перед внедрением"
+  },
+  "human_notes_rus": "Реализация архивации старых вакансий - экспорт, сжатие, очистка полей",
+  "auto_execute": true
+}

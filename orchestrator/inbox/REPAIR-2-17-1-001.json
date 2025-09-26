@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-17-1-001",
+  "type": "generate_patch",
+  "requirement_id": "2.17.1",
+  "input_files": [
+    "core/scheduler_daemon.py",
+    "plugins/fetcher_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "api_recovery.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "api-recovery",
+    "fallback-mechanism"
+  ],
+  "estimated_effort_hours": 7,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement API unavailability recovery system including fallback mechanisms, retry logic and service restoration procedures",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Recovery systems require understanding of fault tolerance patterns and resilience strategies",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement API unavailability recovery system including fallback mechanisms, retry logic and service restoration procedures",
+    "switch_instruction_rus": "Проверьте корректность системы восстановления при недоступности API"
+  },
+  "human_notes_rus": "Реализация восстановления при недоступности API - fallback механизмы",
+  "auto_execute": true
+}

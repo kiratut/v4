@@ -1,0 +1,13 @@
+id: '2.5.2'
+title: Вывод показателей самодиагностики
+description: Обращение к рассчитанным метрикам (п.2.1). Форматирование в рамки. Отображение сигнала устаревших данных и времени, если максимальное время даных более периода самодиагностики.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_system_health_check
+module_paths:
+  - core/scheduler_daemon.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

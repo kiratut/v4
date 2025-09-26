@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-12-1-001",
+  "type": "generate_patch",
+  "requirement_id": "2.12.1",
+  "input_files": [
+    "plugins/fetcher_v4.py",
+    "core/database_v3.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "vacancy_loader.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "vacancy-loading",
+    "version-management"
+  ],
+  "estimated_effort_hours": 9,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement vacancy text loading system including API requests, version management and database storage with deduplication",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Vacancy loading requires complex data processing, versioning logic and database integration",
+    "estimated_complexity": "high",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement vacancy text loading system including API requests, version management and database storage with deduplication",
+    "switch_instruction_rus": "Проверьте корректность загрузки текстов вакансий"
+  },
+  "human_notes_rus": "Реализация загрузки текстов вакансий с версионированием и дедупликацией",
+  "auto_execute": false
+}

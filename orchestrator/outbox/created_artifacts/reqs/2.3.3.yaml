@@ -1,0 +1,11 @@
+id: '2.3.3'
+title: Табличный лог в Excel
+description: Вывод табличных логов и результатов в excel файл, в т.ч. с сохранием форматирования листов (вставка значений, выставление типа ячеек). Добавление строк снизу или замена значений при наличии индексного поля.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 2
+version: '1.0.0'

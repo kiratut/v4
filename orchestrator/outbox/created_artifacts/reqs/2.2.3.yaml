@@ -1,0 +1,11 @@
+id: '2.2.3'
+title: Архивация старых вакансий
+description: "Вакансии >30 суток\: экспорт и сжатие. Очистка полей кроме id вакансий и версии. Макс.срок - параметр. Запись в лог."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 2
+version: '1.0.0'

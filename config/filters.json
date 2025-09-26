@@ -1,0 +1,53 @@
+{
+  "filters": [
+    {
+      "id": "python-remote",
+      "name": "Python разработчик (удаленка)",
+      "params": {
+        "text": "python",
+        "area": 1,
+        "schedule": "remote",
+        "experience": "between1And3"
+      },
+      "active": false,
+      "type": "prod"
+    },
+    {
+      "id": "python-hybrid",
+      "name": "Python разработчик (гибрид)",
+      "params": {
+        "text": "python OR django OR flask",
+        "area": 1,
+        "schedule": "flexible"
+      },
+      "active": true,
+      "type": "prod"
+    },
+    {
+      "id": "backend-senior",
+      "name": "Backend разработчик (Senior)",
+      "params": {
+        "text": "python AND (backend OR api OR microservices)",
+        "area": 1,
+        "experience": "between3And6",
+        "salary": 200000
+      },
+      "active": false,
+      "type": "prod"
+    },
+    {
+      "id": "python-hybrid-latest",
+      "name": "Python (свежие, широкий запрос, Москва)",
+      "params": {
+        "text": "python OR django OR flask",
+        "area": 1,
+        "period": 1,
+        "per_page": 1,
+        "page": 0
+      },
+      "active": false,
+      "type": "test",
+      "max_pages": 1
+    }
+  ]
+}

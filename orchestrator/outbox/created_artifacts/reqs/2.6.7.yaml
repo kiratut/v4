@@ -1,0 +1,14 @@
+id: '2.6.7'
+title: Настройки логирования
+description: "Настройки логирования в config_v4.json\: logging.level (DEBUG/INFO/WARNING/ERROR), logging.file_path (путь к файлу), logging.max_file_size_mb (макс размер файла), logging.backup_count (количество архивов), logging.format (формат записей), logging.db_enabled (логирование в БД), logging.db_levels (уровни для БД), logging.console_enabled (вывод в консоль). Параметры конфигурации\: log_level, log_file_path, max_file_size_mb, backup_count, log_format"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/db_log_handler.py
+  - web/server.py
+  - tests/consolidated_tests.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

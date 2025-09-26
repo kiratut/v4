@@ -1,0 +1,13 @@
+id: '2.6.5'
+title: Авторизация
+description: "Настройки профилей HH в config/auth_roles.json\: profiles[] (список профилей), profile.name (имя профиля), profile.user_agent (User-Agent заголовок), profile.headers (дополнительные заголовки), profile.enabled (активность профиля), profile.rotation_minutes (ротация профиля), profile.max_requests_per_hour (лимит запросов), fallback_user_agent (резервный UA при 400 ошибке). Параметры конфигурации\: auth_profiles_file, fallback_user_agent, rotation_interval"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_hh_multiple_auth_profiles
+module_paths:
+  - config/auth_roles.json
+owner: orchestrator
+priority: 1
+version: '1.0.0'

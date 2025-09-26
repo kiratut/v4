@@ -1,0 +1,40 @@
+# HH Tool v4 Dependencies - Simplified Synchronous Architecture
+# Core HTTP client
+requests>=2.32.3
+
+# CLI interface
+click>=8.0.0
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+tqdm>=4.64.0
+psutil>=5.9.0
+pytest>=7.2.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+jinja2>=3.1.0
+websockets>=11.0.0
+
+# System monitoring (optional, for process info)
+psutil>=5.9.0
+
+# Development dependencies
+pytest>=7.4.0
+playwright>=1.46.0
+
+# Note: v4 uses only standard library for most functionality
+# - sqlite3 (built-in)
+# - threading (built-in) 
+# - json (built-in)
+# - logging (built-in)
+# - pathlib (built-in)
+# - time (built-in)
+
+# Removed from v3:
+# - fastapi, uvicorn (no async web server)
+# - websockets (no real-time features)
+# - paramiko (no SSH operations in v4)
+# - beautifulsoup4 (no HTML parsing needed)
+# - jinja2 (simple web interface without templates)
+# - python-multipart (no file uploads)
+# - pytest-asyncio (no async tests)

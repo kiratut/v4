@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-12-5-001",
+  "type": "generate_patch",
+  "requirement_id": "2.12.5",
+  "input_files": [
+    "plugins/fetcher_v4.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "additional_fields.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "field-extraction",
+    "api-enhancement"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "StarCoder",
+  "suggested_prompt": "Implement additional field extraction from HH.ru API including extended vacancy data and enriched content processing",
+  "model_recommendation": {
+    "suggested_model": "StarCoder",
+    "model_recommendation_reason": "Field extraction requires understanding of API response parsing and data structure enhancement",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "gpt-oss-20b"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement additional field extraction from HH.ru API including extended vacancy data and enriched content processing",
+    "switch_instruction_rus": "Проверьте корректность извлечения дополнительных полей"
+  },
+  "human_notes_rus": "Реализация извлечения дополнительных полей из API HH.ru",
+  "auto_execute": true
+}

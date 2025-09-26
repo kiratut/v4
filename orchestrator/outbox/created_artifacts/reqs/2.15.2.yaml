@@ -1,0 +1,12 @@
+id: '2.15.2'
+title: Запрос LLM на обзор отобранных вакансий и сжатую аналитику
+description: "LLM-обзор отобранных вакансий"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

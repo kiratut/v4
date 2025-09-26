@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Уникальный идентификатор работодателя"
+    },
+    "name": {
+      "type": "string",
+      "description": "Название компании"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL профиля работодателя в API"
+    },
+    "alternate_url": {
+      "type": "string",
+      "description": "Альтернативный URL на сайт HH"
+    },
+    "logo_urls": {
+      "type": ["object", "null"],
+      "properties": {
+        "90": { "type": "string" },
+        "240": { "type": "string" },
+        "original": { "type": "string" }
+      },
+      "description": "URL логотипов"
+    },
+    "vacancies_url": {
+      "type": "string",
+      "description": "URL для вакансий работодателя"
+    },
+    "accredited_it_employer": {
+      "type": "boolean",
+      "description": "Аккредитованный IT-работодатель"
+    },
+    "trusted": {
+      "type": "boolean",
+      "description": "Доверенный работодатель"
+    },
+    "open_vacancies": {
+      "type": "integer",
+      "description": "Количество открытых вакансий"
+    },
+    "area": {
+      "type": ["object", "null"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string" }
+      },
+      "description": "Регион"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Описание компании"
+    },
+    "site_url": {
+      "type": ["string", "null"],
+      "description": "URL сайта компании"
+    },
+    "industries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      },
+      "description": "Отрасли"
+    },
+    "type": {
+      "type": "string",
+      "description": "Тип работодателя (direct, agency и т.д.) из справочника employer_type"
+    },
+    "insider_interviews": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      },
+      "description": "Инсайдерские интервью"
+    }
+  },
+  "required": ["id", "name", "url", "alternate_url", "vacancies_url", "trusted"],
+  "additionalProperties": true
+}

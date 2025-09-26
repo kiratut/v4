@@ -1,0 +1,34 @@
+{
+  "task_id": "REPAIR-2-3-3-001",
+  "type": "generate_patch",
+  "requirement_id": "2.3.3",
+  "input_files": [
+    "core/db_log_handler.py",
+    "web/server.py"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "metrics_endpoint.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "prometheus-format",
+    "metrics-export"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Implement metrics export endpoint with Prometheus format for system statistics and performance monitoring",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Metrics export requires understanding of Prometheus format and monitoring standards",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Implement metrics export endpoint with Prometheus format for system statistics and performance monitoring",
+    "switch_instruction_rus": "Проверьте корректность экспорта метрик в Prometheus формате"
+  },
+  "human_notes_rus": "Реализация экспорта метрик - endpoint в формате Prometheus",
+  "auto_execute": true
+}

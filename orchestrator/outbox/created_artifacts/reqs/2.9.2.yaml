@@ -1,0 +1,12 @@
+id: '2.9.2'
+title: Выбор профиля LLM авторизации по задачам/таскерам (auth_roles.json)
+description: Распределение LLM профилей
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

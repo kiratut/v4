@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-6-8-001",
+  "type": "generate_tests",
+  "requirement_id": "2.6.8",
+  "input_files": [
+    "core/scheduler_daemon.py"
+  ],
+  "expected_outputs": [
+    "test_selfdiag_config.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "selfdiag-config",
+    "monitoring-settings"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for self-diagnostics configuration including monitoring thresholds, alert settings and diagnostic intervals",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Self-diagnostics configuration testing requires understanding of monitoring systems and threshold management",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for self-diagnostics configuration including monitoring thresholds, alert settings and diagnostic intervals",
+    "switch_instruction_rus": "Проверьте корректность тестирования настроек самодиагностики"
+  },
+  "human_notes_rus": "Тесты настройки самодиагностики - пороги мониторинга, настройки алертов",
+  "auto_execute": true
+}

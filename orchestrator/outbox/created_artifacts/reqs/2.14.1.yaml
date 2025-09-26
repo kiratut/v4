@@ -1,0 +1,11 @@
+id: '2.14.1'
+title: Запрос информации по работодателю с HH
+description: Загрузка полей работодателя через HH API
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

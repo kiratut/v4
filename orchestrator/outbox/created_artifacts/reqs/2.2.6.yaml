@@ -1,0 +1,13 @@
+id: '2.2.6'
+title: Мониторинг бюджета LLM API
+description: "Опрос остатка токенов и сроков подписки всех активных LLM, фиксация в логах, предупреждение в Telegram о достижении лимита. Лимит в токенах и днях подписки - параметр для каждого профиля LLM."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_telegram_critical_alerts
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

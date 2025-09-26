@@ -1,0 +1,13 @@
+id: '2.6.4'
+title: Настройки сервиса
+description: "Все параметры демона в config_v4.json\: daemon.pid_file (файл PID), daemon.log_level (уровень логов), daemon.max_workers (макс воркеров), daemon.task_timeout_minutes (таймаут задач), daemon.health_check_interval (интервал проверки), daemon.auto_start_web (автозапуск панели), daemon.background_mode (фоновый режим), daemon.status_file (файл статуса). Параметры конфигурации\: daemon_pid_file, daemon_log_level, daemon_max_workers, daemon_task_timeout"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_config_file_loading
+module_paths:
+  - config/config_v4.json
+owner: orchestrator
+priority: 1
+version: '1.0.0'

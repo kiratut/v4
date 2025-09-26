@@ -1,0 +1,13 @@
+id: '2.12.1'
+title: Запрос и загрузка вакансий по ID
+description: Загрузка полных данных вакансий (версий) во временную таблицу tt с помощью таскеров по задачам в очереди задач. Преобразование html версий описаний вакансий в txt.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_load_chunk
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

@@ -1,0 +1,8 @@
+--- a/web/static/dashboard.js
++++ b/web/static/dashboard.js
+@@ -30,6 +30,7 @@
+ function createStatusCard(cardConfig) {
+     const card = document.createElement('div');
+     card.className = 'card status-card';
+     card.id = cardConfig.id;
++    card.setAttribute('data-test', `status-card-${cardConfig.id}`);

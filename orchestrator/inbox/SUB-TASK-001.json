@@ -1,0 +1,38 @@
+{
+  "task_id": "SUB-TASK-001",
+  "type": "generate_patch",
+  "requirement_id": "REQ-DAEMON-001",
+  "input_files": [
+    "web/templates/dashboard.html",
+    "web/static/dashboard.js"
+  ],
+  "expected_outputs": [
+    "patch.diff",
+    "tests.py",
+    "screenshot.png"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "no-db-changes",
+    "unified-diff",
+    "max_patch_lines:50"
+  ],
+  "estimated_effort_hours": 2,
+  "suggested_model": "grok-code-fast-1",
+  "suggested_prompt": "Add data-test attributes daemon-status and daemon-version in the dashboard rendering code. Output unified diff. If uncertain, return JSON with human_notes_rus and error.",
+  "require_human_approval": false,
+  "model_recommendation": {
+    "suggested_model": "grok-code-fast-1",
+    "model_recommendation_reason": "Single-file DOM change and stable pattern insertion; does not require complex reasoning.",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "gpt-oss-20b",
+      "code-supernova"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Add stable data-test attributes to the dashboard HTML and JS. Output unified diff, then a pytest to assert the selector exists.",
+    "switch_instruction_rus": "Для этой задачи не требуется переключение модели."
+  },
+  "human_notes_rus": "",
+  "auto_execute": false
+}

@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-1-6-001",
+  "type": "generate_tests",
+  "requirement_id": "2.1.6",
+  "input_files": [
+    "core/db_log_handler.py",
+    "logs/app.log"
+  ],
+  "expected_outputs": [
+    "test_error_protection.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "log-monitoring",
+    "error-detection"
+  ],
+  "estimated_effort_hours": 3,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for error protection including log monitoring for time period, error detection and hang protection validation",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Error protection testing requires understanding of log analysis and error pattern recognition",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for error protection including log monitoring for time period, error detection and hang protection validation",
+    "switch_instruction_rus": "Проверьте корректность тестирования защиты от ошибок"
+  },
+  "human_notes_rus": "Тесты защиты от зависания и ошибок - мониторинг логов, детекция ошибок",
+  "auto_execute": true
+}

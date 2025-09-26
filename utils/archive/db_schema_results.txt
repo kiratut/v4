@@ -1,0 +1,28 @@
+БД: data/hh_v4.sqlite3
+Колонок: 23
+Записей: 1312
+
+КОЛОНКИ:
+ 1. id                        | INTEGER    | NotNull: 0 | PK: 1
+ 2. hh_id                     | TEXT       | NotNull: 0 | PK: 0
+ 3. title                     | TEXT       | NotNull: 0 | PK: 0
+ 4. company                   | TEXT       | NotNull: 0 | PK: 0
+ 5. employer_id               | TEXT       | NotNull: 0 | PK: 0
+ 6. salary_from               | INTEGER    | NotNull: 0 | PK: 0
+ 7. salary_to                 | INTEGER    | NotNull: 0 | PK: 0
+ 8. currency                  | TEXT       | NotNull: 0 | PK: 0
+ 9. experience                | TEXT       | NotNull: 0 | PK: 0
+10. schedule                  | TEXT       | NotNull: 0 | PK: 0
+11. employment                | TEXT       | NotNull: 0 | PK: 0
+12. description               | TEXT       | NotNull: 0 | PK: 0
+13. key_skills                | TEXT       | NotNull: 0 | PK: 0
+14. area                      | TEXT       | NotNull: 0 | PK: 0
+15. published_at              | TEXT       | NotNull: 0 | PK: 0
+16. url                       | TEXT       | NotNull: 0 | PK: 0
+17. processed_at              | REAL       | NotNull: 0 | PK: 0
+18. filter_id                 | TEXT       | NotNull: 0 | PK: 0
+19. content_hash              | TEXT       | NotNull: 0 | PK: 0
+20. raw_json                  | TEXT       | NotNull: 0 | PK: 0
+21. created_at                | REAL       | NotNull: 0 | PK: 0
+22. updated_at                | REAL       | NotNull: 0 | PK: 0
+23. is_processed              | INTEGER    | NotNull: 0 | PK: 0

@@ -1,0 +1,11 @@
+id: '2.16.5'
+title: "Запрос LLM на подготовку сводки по откликам [Приоритет 3]"
+description: LLM анализ поданных откликов
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

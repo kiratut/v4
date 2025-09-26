@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH-бот v4 - Панель мониторинга</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .card-metric { 
+            text-align: center; 
+            padding: 1rem; 
+        }
+        .metric-value { 
+            font-size: 2rem; 
+            font-weight: bold; 
+            color: #0d6efd; 
+        }
+        .metric-label { 
+            color: #6c757d; 
+            font-size: 0.9rem; 
+        }
+        .status-healthy { color: #198754; }
+        .status-warning { color: #ffc107; }
+        .status-error { color: #dc3545; }
+        .refresh-indicator {
+            display: none;
+            color: #0d6efd;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 1rem 0;
+        }
+        .test-result {
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            border-radius: 0.25rem;
+        }
+        .test-pass { background-color: #d1f2eb; border-left: 4px solid #198754; }
+        .test-fail { background-color: #f8d7da; border-left: 4px solid #dc3545; }
+        .test-partial { background-color: #fff3cd; border-left: 4px solid #ffc107; }
+        .navbar-brand { font-weight: bold; }
+        .auto-refresh { 
+            position: fixed; 
+            top: 70px; 
+            right: 20px; 
+            z-index: 1000; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot"></i> HH-бот v4
+            </a>
+            <span class="navbar-text">
+                Панель мониторинга
+            </span>
+        </div>
+    </nav>
+
+    <!-- Индикатор автообновления -->
+    <div class="auto-refresh">
+        <div class="badge bg-primary" id="refreshBadge">
+            <i class="fas fa-sync-alt refresh-indicator" id="refreshIcon"></i>
+            <span id="refreshTimer">30</span>с
+        </div>
+    </div>
+
+    <div class="container-fluid mt-3">
+        
+        <!-- Состояние системы -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5><i class="fas fa-heartbeat"></i> Состояние системы</h5>
+                        <span class="badge" id="systemStatusBadge">Загрузка...</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="systemHealth">
+                            <div class="col text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Загрузка...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основная статистика -->
+        <div class="row mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card card-metric bg-light">
+                    <div class="metric-value" id="totalVacancies">0</div>
+                    <div class="metric-label">Всего вакансий</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card card-metric bg-light">
+                    <div class="metric-value" id="newVacancies">0</div>
+                    <div class="metric-label">Новых за неделю</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card card-metric bg-light">
+                    <div class="metric-value" id="efficiency">0%</div>
+                    <div class="metric-label">Эффективность</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card card-metric bg-light">
+                    <div class="metric-value" id="dbSize">0 МБ</div>
+                    <div class="metric-label">Размер БД</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Профиль данных -->
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-chart-bar"></i> Профиль данных</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Распределение по зарплатам</h6>
+                                <div class="chart-container">
+                                    <canvas id="salaryChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Активность по дням</h6>
+                                <div class="chart-container">
+                                    <canvas id="activityChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h6>Топ работодателей</h6>
+                                <div id="topEmployers" class="small">
+                                    Загрузка...
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Распределение по опыту</h6>
+                                <div id="experienceDistribution" class="small">
+                                    Загрузка...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Функциональные тесты -->
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5><i class="fas fa-vial"></i> Функциональные тесты</h5>
+                        <button class="btn btn-sm btn-outline-primary" onclick="runTests()">
+                            <i class="fas fa-play"></i> Запустить
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="testResults">
+                            <div class="text-muted text-center py-3">
+                                <i class="fas fa-flask fa-2x mb-2"></i><br>
+                                Нажмите "Запустить" для проведения тестов
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Детальная статистика изменений -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-history"></i> Статистика изменений</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="changesStats">
+                            <div class="col text-center">
+                                <div class="spinner-border spinner-border-sm" role="status"></div>
+                                Загрузка статистики...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let refreshTimer = 30;
+        let refreshInterval;
+        let salaryChart, activityChart;
+
+        // Автообновление данных
+        function startAutoRefresh() {
+            refreshInterval = setInterval(() => {
+                refreshTimer--;
+                document.getElementById('refreshTimer').textContent = refreshTimer;
+                
+                if (refreshTimer <= 0) {
+                    refreshTimer = 30;
+                    loadAllData();
+                }
+            }, 1000);
+        }
+
+        // Загрузка всех данных
+        async function loadAllData() {
+            showRefreshIndicator();
+            
+            try {
+                await Promise.all([
+                    loadSystemHealth(),
+                    loadDatabaseStats(), 
+                    loadDataProfile()
+                ]);
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+            
+            hideRefreshIndicator();
+        }
+
+        function showRefreshIndicator() {
+            document.getElementById('refreshIcon').style.display = 'inline-block';
+            document.getElementById('refreshIcon').classList.add('fa-spin');
+        }
+
+        function hideRefreshIndicator() {
+            document.getElementById('refreshIcon').classList.remove('fa-spin');
+            setTimeout(() => {
+                document.getElementById('refreshIcon').style.display = 'none';
+            }, 500);
+        }
+
+        // Загрузка состояния системы
+        async function loadSystemHealth() {
+            try {
+                const response = await fetch('/api/health');
+                const health = await response.json();
+                
+                const statusBadge = document.getElementById('systemStatusBadge');
+                const healthContainer = document.getElementById('systemHealth');
+                
+                // Обновляем бейдж статуса
+                statusBadge.className = `badge bg-${getStatusColor(health.status)}`;
+                statusBadge.textContent = getStatusText(health.status);
+                
+                // Отображаем компоненты системы
+                healthContainer.innerHTML = `
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-database fa-2x ${health.database?.status === 'online' ? 'text-success' : 'text-danger'}"></i>
+                        <div class="small mt-2">
+                            База данных<br>
+                            <span class="badge bg-${health.database?.status === 'online' ? 'success' : 'danger'}">
+                                ${health.database?.status === 'online' ? 'Подключена' : 'Недоступна'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-cog fa-2x ${health.config?.status === 'found' ? 'text-success' : 'text-warning'}"></i>
+                        <div class="small mt-2">
+                            Конфигурация<br>
+                            <span class="badge bg-${health.config?.status === 'found' ? 'success' : 'warning'}">
+                                ${health.config?.status === 'found' ? 'Найдена' : 'Отсутствует'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-file-alt fa-2x ${health.logs?.status === 'available' ? 'text-success' : 'text-secondary'}"></i>
+                        <div class="small mt-2">
+                            Логи<br>
+                            <span class="badge bg-${health.logs?.status === 'available' ? 'success' : 'secondary'}">
+                                ${health.logs?.count || 0} файлов
+                            </span>
+                        </div>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Ошибка загрузки состояния системы:', error);
+            }
+        }
+
+        // Загрузка статистики БД
+        async function loadDatabaseStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                if (stats.error) {
+                    document.getElementById('totalVacancies').textContent = 'Ошибка';
+                    return;
+                }
+                
+                // Обновляем метрики
+                const basic = stats.basic_stats || {};
+                const changes = stats.changes_stats?.vacancies || {};
+                
+                document.getElementById('totalVacancies').textContent = basic.total_vacancies || 0;
+                document.getElementById('newVacancies').textContent = changes.new_vacancies || 0;
+                document.getElementById('efficiency').textContent = (changes.efficiency_percentage || 0) + '%';
+                document.getElementById('dbSize').textContent = (basic.db_size_mb || 0) + ' МБ';
+                
+                // Обновляем детальную статистику изменений
+                updateChangesStats(stats.changes_stats);
+                
+            } catch (error) {
+                console.error('Ошибка загрузки статистики БД:', error);
+            }
+        }
+
+        // Загрузка профиля данных
+        async function loadDataProfile() {
+            try {
+                const response = await fetch('/api/data-profile');
+                const profile = await response.json();
+                
+                if (profile.error) {
+                    console.error('Ошибка профиля данных:', profile.error);
+                    return;
+                }
+                
+                // Обновляем графики
+                updateSalaryChart(profile.vacancies?.salary_distribution);
+                updateActivityChart(profile.vacancies?.recent_activity);
+                
+                // Обновляем списки
+                updateTopEmployers(profile.vacancies?.top_employers);
+                updateExperienceDistribution(profile.vacancies?.experience_distribution);
+                
+            } catch (error) {
+                console.error('Ошибка загрузки профиля данных:', error);
+            }
+        }
+
+        // Обновление графика зарплат
+        function updateSalaryChart(salaryData) {
+            if (!salaryData) return;
+            
+            const ctx = document.getElementById('salaryChart').getContext('2d');
+            
+            if (salaryChart) {
+                salaryChart.destroy();
+            }
+            
+            salaryChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(salaryData),
+                    datasets: [{
+                        data: Object.values(salaryData),
+                        backgroundColor: [
+                            '#FF6384', '#36A2EB', '#FFCE56', 
+                            '#4BC0C0', '#9966FF', '#FF9F40'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Обновление графика активности
+        function updateActivityChart(activityData) {
+            if (!activityData) return;
+            
+            const ctx = document.getElementById('activityChart').getContext('2d');
+            
+            if (activityChart) {
+                activityChart.destroy();
+            }
+            
+            const dates = Object.keys(activityData).slice(-7); // Последние 7 дней
+            const values = dates.map(date => activityData[date]);
+            
+            activityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates.map(date => new Date(date).toLocaleDateString('ru')),
+                    datasets: [{
+                        label: 'Вакансии',
+                        data: values,
+                        borderColor: '#36A2EB',
+                        backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Обновление топа работодателей
+        function updateTopEmployers(employersData) {
+            if (!employersData) return;
+            
+            const container = document.getElementById('topEmployers');
+            const employers = Object.entries(employersData)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 5);
+            
+            container.innerHTML = employers.map(([name, count]) => 
+                `<div class="d-flex justify-content-between mb-1">
+                    <span class="text-truncate">${name}</span>
+                    <span class="badge bg-primary">${count}</span>
+                </div>`
+            ).join('');
+        }
+
+        // Обновление распределения по опыту
+        function updateExperienceDistribution(experienceData) {
+            if (!experienceData) return;
+            
+            const container = document.getElementById('experienceDistribution');
+            const experiences = Object.entries(experienceData);
+            
+            container.innerHTML = experiences.map(([exp, count]) => 
+                `<div class="d-flex justify-content-between mb-1">
+                    <span>${getExperienceLabel(exp)}</span>
+                    <span class="badge bg-secondary">${count}</span>
+                </div>`
+            ).join('');
+        }
+
+        // Обновление статистики изменений
+        function updateChangesStats(changesData) {
+            if (!changesData) return;
+            
+            const container = document.getElementById('changesStats');
+            const vacancies = changesData.vacancies || {};
+            const employers = changesData.employers || {};
+            
+            container.innerHTML = `
+                <div class="col-md-6">
+                    <h6>Вакансии (последние 7 дней)</h6>
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="metric-value text-success">${vacancies.new_vacancies || 0}</div>
+                            <div class="metric-label">Новых</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="metric-value text-info">${vacancies.new_versions || 0}</div>
+                            <div class="metric-label">Версий</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="metric-value text-warning">${vacancies.duplicates_skipped || 0}</div>
+                            <div class="metric-label">Дубликатов</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6>Работодатели (последние 7 дней)</h6>
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="metric-value text-success">${employers.new_employers || 0}</div>
+                            <div class="metric-label">Новых</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="metric-value text-info">${employers.new_versions || 0}</div>
+                            <div class="metric-label">Версий</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="metric-value text-warning">${employers.duplicates_skipped || 0}</div>
+                            <div class="metric-label">Дубликатов</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Запуск функциональных тестов
+        async function runTests() {
+            const container = document.getElementById('testResults');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div><div class="mt-2">Запуск тестов...</div></div>';
+            
+            try {
+                const response = await fetch('/api/run-tests', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.status === 'error') {
+                    container.innerHTML = `<div class="alert alert-danger">Ошибка: ${result.error}</div>`;
+                    return;
+                }
+                
+                const report = result.report;
+                const stats = report.statistics;
+                
+                let html = `
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>Успешность: <strong>${report.success_rate.toFixed(1)}%</strong></span>
+                            <span>Время: ${report.duration.toFixed(2)}с</span>
+                        </div>
+                        <div class="progress mt-1">
+                            <div class="progress-bar bg-success" style="width: ${(stats.passed/stats.total*100)}%"></div>
+                            <div class="progress-bar bg-warning" style="width: ${(stats.partial/stats.total*100)}%"></div>
+                            <div class="progress-bar bg-danger" style="width: ${(stats.failed/stats.total*100)}%"></div>
+                        </div>
+                        <small class="text-muted">
+                            ✅${stats.passed} ⚠️${stats.partial} ❌${stats.failed} ⏸️${stats.skipped}
+                        </small>
+                    </div>
+                `;
+                
+                // Показываем результаты тестов
+                report.results.forEach(test => {
+                    const statusClass = {
+                        'PASS': 'test-pass',
+                        'FAIL': 'test-fail', 
+                        'PARTIAL': 'test-partial',
+                        'SKIP': 'test-skip'
+                    }[test.status] || 'test-skip';
+                    
+                    const statusIcon = {
+                        'PASS': '✅',
+                        'FAIL': '❌',
+                        'PARTIAL': '⚠️',
+                        'SKIP': '⏸️'
+                    }[test.status] || '❓';
+                    
+                    html += `
+                        <div class="test-result ${statusClass}">
+                            <div class="d-flex justify-content-between">
+                                <span><strong>${statusIcon} ${test.id}</strong>: ${test.name}</span>
+                                <small>${test.duration.toFixed(3)}s</small>
+                            </div>
+                            <small class="text-muted">${test.message}</small>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Ошибка выполнения: ${error.message}</div>`;
+            }
+        }
+
+        // Вспомогательные функции
+        function getStatusColor(status) {
+            return {
+                'healthy': 'success',
+                'warning': 'warning', 
+                'error': 'danger'
+            }[status] || 'secondary';
+        }
+
+        function getStatusText(status) {
+            return {
+                'healthy': 'Работает',
+                'warning': 'Предупреждения',
+                'error': 'Ошибки'
+            }[status] || 'Неизвестно';
+        }
+
+        function getExperienceLabel(exp) {
+            const labels = {
+                'noExperience': 'Без опыта',
+                'between1And3': '1-3 года',
+                'between3And6': '3-6 лет',
+                'moreThan6': 'Более 6 лет'
+            };
+            return labels[exp] || exp;
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData();
+            startAutoRefresh();
+        });
+    </script>
+</body>
+</html>

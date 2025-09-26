@@ -1,0 +1,13 @@
+id: '2.12.2'
+title: Проверка уникальности по ID и по набору ключей
+description: Вычисление хэш по набору полей для всех вакансий в tt, поиск в БД скаченых вакансий одним запросом (так должно быть быстрее) пересечения хэша с tt, удаление из tt дублей.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_vacancy_deduplication
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

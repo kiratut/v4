@@ -1,0 +1,12 @@
+id: '2.13.4'
+title: Сохранение полей классификации и сжатия
+description: Сохранение LLM анализа
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

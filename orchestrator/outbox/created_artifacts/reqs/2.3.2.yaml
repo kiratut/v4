@@ -1,0 +1,11 @@
+id: '2.3.2'
+title: Трассировка модулей и функций в логах
+description: "В файловом логе префиксы-коды модулей в строках лога. В БД поля имени модуля и функции - источника события лога."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 2
+version: '1.0.0'

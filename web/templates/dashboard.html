@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH Tool v4 Dashboard</title>
+    <link href="/static/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="quick-links" style="display:flex;gap:2rem;align-items:center;font-size:0.95rem;">
+            <h1>📊 HH-Bot v4 Dashboard</h1>
+            <p>URL: <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a></p>
+            <span>API: <a href="/api/stats" target="_blank" style="color:#3498db;">/api/stats</a></span>
+            <span style="font-size:0.93em;color:#888;">Перезапуск: <code>python cli_v4.py dev-up -w 2 -p 1</code></span>
+        </div>
+        <h1>🔧 HH Tool v4 Dashboard</h1>
+        <div style="display:flex;align-items:center;gap:1rem">
+            <a href="/api/stats" target="_blank" class="json-link">JSON</a>
+            <div class="status-indicator" id="connectionStatus">
+                <span class="dot online"></span> Подключено
+            </div>
+            <button id="manualRefreshBtn" onclick="manualRefresh()" class="refresh-btn">🔄 Refresh</button>
+            <span id="lastRefresh" class="subtitle"></span>
+        </div>
+    </div>
+
+    <!-- Dynamic containers for v4 layout built by dashboard.js -->
+    <div class="container">
+        <div class="status-row"></div>
+        <div class="dashboard-grid"></div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid compact">
+            <div class="stat-card">
+                <h3>📋 Задачи</h3>
+                <div class="stat-value" id="tasksToday">0</div>
+                <div class="stat-details" id="taskBreakdown"></div>
+            </div>
+            <div class="stat-card">
+                <h3>💼 Вакансии</h3>
+                <div class="stat-value" id="vacanciesTotal">0</div>
+                <div class="stat-details" id="vacancyDetails"></div>
+            </div>
+            <div class="stat-card system-card">
+                <h3>⚡ Система Работает</h3>
+                <div class="stat-value" id="systemStatus">OK</div>
+                <div class="stat-details" id="systemDetails"></div>
+                <div class="stat-details" id="systemUsage"></div>
+                <div class="stat-details"><strong>📊 База:</strong> <span id="dbSize">0 MB</span></div>
+            </div>
+            <div class="stat-card test-card">
+                <h3>🧪 Тесты</h3>
+                <div class="test-buttons">
+                    <button onclick="startSystem()" class="test-btn success">▶️ Start</button>
+                    <button onclick="stopSystem()" class="test-btn danger">⏹️ Stop</button>
+                    <button onclick="runTests()" class="test-btn info">🧪 Test</button>
+                </div>
+                <div class="test-results" id="testResults">
+                    <div class="stat-details">Success Rate: <span id="testSuccessRate" style="font-weight:bold;">0%</span></div>
+                    <div class="stat-details">Last Run: <span id="testLastRun">Never</span></div>
+                    <button onclick="showTestDetails()" class="test-btn secondary" style="margin-top:5px;">📋 Details</button>
+                </div>
+                <div class="failed-tests" id="failedTests" style="display:none;">
+                    <h4>❌ Проваленные тесты:</h4>
+                    <ul id="failedTestsList"></ul>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>📈 Загрузка</h3>
+                <div class="stat-details" id="loadStats"></div>
+            </div>
+            <div class="stat-card">
+                <h3>🧾 История тестов</h3>
+                <div id="testHistoryList" class="history-list">
+                    <div class="stat-details">Нет результатов</div>
+                </div>
+                <button class="refresh-btn" onclick="window.dashboard?.loadTestHistory()" style="margin-top:10px;width:100%">Обновить</button>
+            </div>
+        </div></div>
+
+        <div class="section compact">
+            <div class="section-header">
+                <h3>🔄 Последние задачи (3)</h3>
+                <button class="refresh-btn" onclick="loadTasks()">Обновить</button>
+            </div>
+            <div class="table-container">
+                <table id="tasksTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Тип</th>
+                            <th>Статус</th>
+                            <th>Создано</th>
+                            <th>Воркер</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/dashboard.js?v=20250923231400"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+id: '2.9.1'
+title: Диагностика работы профилей авторизации LLM
+description: Мониторинг LLM профилей
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_health_check
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

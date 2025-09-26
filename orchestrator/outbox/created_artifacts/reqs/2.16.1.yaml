@@ -1,0 +1,12 @@
+id: '2.16.1'
+title: Отбор по критериям (пользователь проставляет статус вручную в БД)
+description: Селекция для отклика
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

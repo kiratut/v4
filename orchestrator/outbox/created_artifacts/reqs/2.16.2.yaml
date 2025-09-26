@@ -1,0 +1,12 @@
+id: '2.16.2'
+title: Запросы LLM на адаптацию сопроводительного письма под вакансии
+description: Генерация персональных писем
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

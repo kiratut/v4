@@ -1,0 +1,15 @@
+id: '2.3.1'
+title: Общий модуль логирования
+description: "Централизованное логирование в БД и в файлы. Логирование настраиваемых статусов в БД (список статусов - параметр). Логирование настраиваемых статусов в файлы (список статусов - параметр). Логирование набора dev test в файл union_test.log"
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_critical_event_logging
+module_paths:
+  - core/db_log_handler.py
+  - web/server.py
+  - tests/consolidated_tests.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

@@ -1,0 +1,13 @@
+id: '2.11.3'
+title: Сбор ID вакансий
+description: Извлечение идентификаторов id вакансий из страниц во временную таблицу t исключая дублирование одинаковых id.
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_search_finds_new_vacancies
+module_paths:
+  - plugins/fetcher_v4.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

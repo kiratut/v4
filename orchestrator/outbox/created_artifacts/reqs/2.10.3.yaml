@@ -1,0 +1,13 @@
+id: '2.10.3'
+title: Сохранение/обновление записей
+description: Операции записи данных
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_vacancy_deduplication
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

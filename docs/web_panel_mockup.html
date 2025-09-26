@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH v4 Control Panel - Design Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .header .subtitle {
+            opacity: 0.8;
+            font-size: 11px;
+            margin-left: 10px;
+        }
+
+        .container {
+            height: calc(100vh - 40px);
+            margin: 0 auto;
+            padding: 8px;
+            overflow: hidden;
+        }
+
+        /* Compact Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            height: calc(100vh - 90px);
+        }
+
+        .status-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 6px;
+            height: 60px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border: 1px solid #e0e7ff;
+            overflow: hidden;
+        }
+
+        .card-header {
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Status Cards */
+        .status-card {
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .status-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: #2d3748;
+        }
+
+        .status-value {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .status-ok { background: linear-gradient(135deg, #48bb78, #38a169); }
+        .status-warning { background: linear-gradient(135deg, #ed8936, #dd6b20); }
+        .status-error { background: linear-gradient(135deg, #f56565, #e53e3e); }
+
+        .status-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+
+        .status-value {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Resource Monitor */
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+        }
+
+        .resource-label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .progress-bar {
+            width: 120px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-ok { background: linear-gradient(90deg, #48bb78, #38a169); }
+        .progress-warning { background: linear-gradient(90deg, #ed8936, #dd6b20); }
+        .progress-critical { background: linear-gradient(90deg, #f56565, #e53e3e); }
+
+        .resource-value {
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 45px;
+            text-align: right;
+        }
+
+        /* Activity Log */
+        .activity-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-time {
+            color: #666;
+            font-size: 12px;
+            margin-right: 10px;
+            min-width: 45px;
+        }
+
+        .activity-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+        }
+
+        .activity-text {
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.2s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        /* Large Card Layouts */
+        .task-queue {
+            grid-column: span 2;
+        }
+
+        .system-overview {
+            grid-column: span 2;
+        }
+
+        /* Task Queue Table */
+        .task-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .task-table th,
+        .task-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .task-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .task-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-running {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+
+        .status-completed {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .status-pending {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        /* Settings Panel */
+        .setting-group {
+            margin-bottom: 15px;
+        }
+
+        .setting-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .setting-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .setting-toggle {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .toggle.active {
+            background: #48bb78;
+        }
+
+        .toggle::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.2s;
+        }
+
+        .toggle.active::after {
+            transform: translateX(20px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-grid,
+            .status-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .task-queue,
+            .system-overview {
+                grid-column: span 1;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+        }
+
+        /* Charts placeholder */
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #f7fafc, #e2e8f0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <h1>HH v4 Control Panel</h1>
+            <div class="subtitle">v4.0.0 • 23.09.2025 19:01</div>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <!-- 2.5.7 Ручное обновление -->
+            <button id="manualRefreshBtn" onclick="manualRefresh()" style="padding: 4px 8px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 4px; font-size: 11px; cursor: pointer; margin-right: 8px;">
+                🔄 Refresh
+            </button>
+            <span id="lastRefresh" style="font-size: 10px; opacity: 0.8;">19:01:03</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 2.5.2 Самодиагностика - Status Overview Row -->
+        <div class="status-row">
+            <div class="card status-card">
+                <div class="status-title">System Health<br/>50.6% = CPU 1% + RAM 2% + Disk 3%</div>
+            </div>
+
+            <div class="card status-card">
+                <div class="status-title">Daemon Status</div>
+                <div class="status-value" id="daemonStatus">PID: 12345 • Started: 17:14, Unix: <span id="daemonUnixTime">1727106840</span></div>
+            </div>
+
+            <div class="card status-card">
+                <div class="status-title">Tasks Queue</div>
+                <div class="status-value" id="taskStats">3 running, 7 pending</div>
+            </div>
+
+            <div class="card status-card">
+                <div class="status-title">HH API</div>
+                <div class="status-value" id="apiHealth">200 OK • 0 bans</div>
+            </div>
+        </div>
+
+        <!-- Compact Dashboard Grid - 4 блока в ряд -->
+        <div class="dashboard-grid">
+            <!-- Блок 1: System Resources + Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">System Resources</div>
+                </div>
+                
+                <div style="font-size: 16px; margin-bottom: 8px; text-align: center;">
+                    <div style="color: #28a745; font-weight: bold; margin-bottom: 4px;">All Systems OK</div>
+                    <div style="font-size: 12px; color: #666;">Last check: 20:25</div>
+                </div>
+
+                <div style="border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+                        <button title="Запустить систему" style="padding: 6px 8px; font-size: 12px; border: 1px solid #ddd; border-radius: 4px; background: #28a745; color: white; cursor: pointer;">Start</button>
+                        <button title="Остановить систему" style="padding: 6px 8px; font-size: 12px; border: 1px solid #ddd; border-radius: 4px; background: #dc3545; color: white; cursor: pointer;">Stop</button>
+                    </div>
+                    <div style="font-size: 12px; margin-top: 4px; height: 60px; overflow-y: auto; background: #f8f9fa; padding: 4px; border-radius: 4px;">
+                        <div>19:29 ✓ Refresh triggered</div>
+                        <div>19:28 🔄 Health check OK</div>
+                        <div>19:25 📥 Load completed</div>
+                        <div>19:21 ⚠️ High CPU usage</div>
+                    </div>
+                </div>
+
+                <!-- Config Editor Block -->
+                <div style="border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px;">
+                    <div style="font-size: 12px; margin-bottom: 4px; font-weight: 600;">Config Editor (config_v4.json):</div>
+                    
+                    <!-- Editor Controls -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 4px;">
+                        <button title="Прочитать актуальный config_v4.json с диска" onclick="readConfigFromDisk()" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #007bff; color: white; cursor: pointer;">📖 Read</button>
+                        <button title="Записать отредактированный JSON на диск" onclick="writeConfigToDisk()" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #28a745; color: white; cursor: pointer;">💾 Write</button>
+                        <button title="Сбросить изменения" onclick="resetConfigEditor()" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #6c757d; color: white; cursor: pointer;">🔄 Reset</button>
+                    </div>
+                    
+                    <!-- JSON Editor -->
+                    <textarea id="configEditor" style="width: 100%; height: 200px; font-family: 'Courier New', monospace; font-size: 11px; border: 1px solid #ddd; border-radius: 4px; padding: 4px; resize: vertical;" placeholder="JSON config will be loaded here...">{
+  "daemon": {
+    "pid_file": "data/daemon.pid",
+    "log_level": "INFO",
+    "max_workers": 5,
+    "task_timeout_minutes": 30
+  },
+  "database": {
+    "path": "data/hh_v3.sqlite3",
+    "backup_interval_hours": 6
+  },
+  "api": {
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  }
+}</textarea>
+                </div>
+            </div>
+
+            <!-- Блок 2: Filters & Schedule Control -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Filters & Schedule</div>
+                </div>
+                
+                <!-- Schedule Control -->
+                <div style="font-size: 14px; margin-bottom: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <span>Frequency (h):</span>
+                        <input title="Частота загрузок в часах (0 = отключено)" id="loadFrequency" type="number" value="1" min="0" max="24" style="width: 50px; padding: 2px; font-size: 12px;">
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Next Load:</span><span id="nextLoadTime">20:00 (31min)</span>
+                    </div>
+                </div>
+
+                <!-- Main Work Cycle Status (2.4.7) -->
+                <div style="border-top: 1px solid #eee; padding-top: 6px; margin-top: 6px; margin-bottom: 8px;">
+                    <div style="font-size: 12px; font-weight: 600; margin-bottom: 4px;">🔄 Main Work Cycle:</div>
+                    <div style="font-size: 12px; background: #e8f5e8; padding: 4px; border-radius: 4px;">
+                        <div>Status: <strong style="color: #28a745;">Active Loading</strong></div>
+                        <div>Phase: Filter "Python Dev" (3/12 completed)</div>
+                        <div>ETA: ~8 minutes remaining</div>
+                    </div>
+                </div>
+
+                <!-- Filters Management -->
+                <div style="border-top: 1px solid #eee; padding-top: 6px;">
+                    <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+                        <button title="Включить все фильтры" onclick="toggleAllFilters(true)" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #f8f9fa; cursor: pointer;">All ON</button>
+                        <button title="Выключить все фильтры" onclick="toggleAllFilters(false)" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #f8f9fa; cursor: pointer;">OFF</button>
+                        <button title="Инвертировать фильтры" onclick="invertFilters()" style="padding: 4px 6px; font-size: 10px; border: 1px solid #ddd; border-radius: 3px; background: #f8f9fa; cursor: pointer;">INV</button>
+                    </div>
+                    
+                    <div style="font-size: 11px; color: #666; margin-bottom: 4px;">
+                        Total: <strong>8</strong> | Active: <strong id="activeFilters">5</strong> | Test: <strong>2</strong>
+                    </div>
+
+                    <div style="height: 220px; overflow-y: auto; font-size: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa; font-weight: 600; font-size: 11px; height: 24px;">
+                                    <th style="padding: 3px; text-align: left;">✓</th>
+                                    <th style="padding: 3px; text-align: left;">Type</th>
+                                    <th style="padding: 3px; text-align: left;">Status</th>
+                                    <th style="padding: 3px; text-align: left;">Query</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="height: 48px;">
+                                    <td style="padding: 2px; vertical-align: top;"><input type="checkbox" checked style="transform: scale(1.0);"></td>
+                                    <td style="padding: 2px; vertical-align: top; font-size: 11px;">prod</td>
+                                    <td style="padding: 2px; color: #28a745; vertical-align: top; font-size: 11px;">1247 ids</td>
+                                    <td style="padding: 2px; font-size: 10px; line-height: 1.2; vertical-align: top;">{"text":"Python<br/>developer","per_page":<br/>100,"area":1}</td>
+                                </tr>
+                                <tr style="background: #f8f9fa; height: 48px;">
+                                    <td style="padding: 2px; vertical-align: top;"><input type="checkbox" checked style="transform: scale(1.0);"></td>
+                                    <td style="padding: 2px; vertical-align: top; font-size: 11px;">prod</td>
+                                    <td style="padding: 2px; color: #ffc107; vertical-align: top; font-size: 11px;">67% of 894</td>
+                                    <td style="padding: 2px; font-size: 10px; line-height: 1.2; vertical-align: top;">{"text":"Java senior<br/>engineer","experience":<br/>"between3And6"}</td>
+                                </tr>
+                                <tr style="height: 48px;">
+                                    <td style="padding: 2px; vertical-align: top;"><input type="checkbox" style="transform: scale(1.0);"></td>
+                                    <td style="padding: 2px; vertical-align: top; font-size: 11px;">test</td>
+                                    <td style="padding: 2px; color: #666; vertical-align: top; font-size: 11px;">-</td>
+                                    <td style="padding: 2px; font-size: 10px; line-height: 1.2; vertical-align: top;">{"text":"Test filter<br/>debug","area":2,<br/>"test":true}</td>
+                                </tr>
+                                <tr style="background: #f8f9fa; height: 48px;">
+                                    <td style="padding: 2px; vertical-align: top;"><input type="checkbox" checked style="transform: scale(1.0);"></td>
+                                    <td style="padding: 2px; vertical-align: top; font-size: 11px;">prod</td>
+                                    <td style="padding: 2px; color: #666; vertical-align: top; font-size: 11px;">wait ids</td>
+                                    <td style="padding: 2px; font-size: 10px; line-height: 1.2; vertical-align: top;">{"text":"React<br/>frontend","salary":<br/>"gte100000"}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок 3: Tasks Queue & Statistics -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Tasks Queue</div>
+                </div>
+                
+                <!-- Vacancy Statistics -->
+                <div style="font-size: 14px; margin-bottom: 8px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Vacancies:</span><span id="vacancyCount">1,247</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Employers:</span><span id="employerCount">89</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Queue ETA:</span><span id="queueEta">~15min</span>
+                    </div>
+                </div>
+
+                <!-- Task Queue Table -->
+                <div style="border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px;">
+                    <div style="font-size: 12px; margin-bottom: 4px; font-weight: 600;">Active Tasks: <span style="font-size: 10px; color: #666;">Last Update Unix: <span id="tasksUnixTime">1727112960</span></span></div>
+                    <div style="height: 280px; overflow-y: auto; font-size: 13px; border: 1px solid #ddd; border-radius: 4px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa; font-weight: 600; font-size: 12px; height: 24px;">
+                                    <th style="padding: 4px; text-align: left;">№</th>
+                                    <th style="padding: 4px; text-align: left;">Worker</th>
+                                    <th style="padding: 4px; text-align: left;">Task Type</th>
+                                    <th style="padding: 4px; text-align: left;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="height: 28px;">
+                                    <td style="padding: 4px; font-size: 12px;">T001</td>
+                                    <td style="padding: 4px; font-size: 12px;">W1</td>
+                                    <td style="padding: 4px; font-size: 12px;">load_vacancies</td>
+                                    <td style="padding: 4px; color: #28a745; font-size: 12px;">Running (894/1000)</td>
+                                </tr>
+                                <tr style="background: #f8f9fa; height: 28px;">
+                                    <td style="padding: 4px; font-size: 12px;">T002</td>
+                                    <td style="padding: 4px; font-size: 12px;">W2</td>
+                                    <td style="padding: 4px; font-size: 12px;">fetch_employers</td>
+                                    <td style="padding: 4px; color: #28a745; font-size: 12px;">Processing (78/89)</td>
+                                </tr>
+                                <tr style="height: 28px;">
+                                    <td style="padding: 4px; font-size: 12px;">T003</td>
+                                    <td style="padding: 4px; font-size: 12px;">W3</td>
+                                    <td style="padding: 4px; font-size: 12px;">cleanup</td>
+                                    <td style="padding: 4px; color: #ffc107; font-size: 12px;">Queued</td>
+                                </tr>
+                                <tr style="background: #f8f9fa; height: 28px;">
+                                    <td style="padding: 4px; font-size: 12px;">T004</td>
+                                    <td style="padding: 4px; font-size: 12px;">-</td>
+                                    <td style="padding: 4px; font-size: 12px;">sync_host2</td>
+                                    <td style="padding: 4px; color: #666; font-size: 12px;">Pending</td>
+                                </tr>
+                                <tr style="height: 28px;">
+                                    <td style="padding: 4px; font-size: 12px;">T005</td>
+                                    <td style="padding: 4px; font-size: 12px;">-</td>
+                                    <td style="padding: 4px; font-size: 12px;">analyze_host3</td>
+                                    <td style="padding: 4px; color: #666; font-size: 12px;">Pending</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 4px; font-size: 11px; color: #666;">
+                        Total Queue: <strong>5 tasks</strong> | Active: <strong>2</strong> | Pending: <strong>3</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок 4: Workers Status (Moved from position 2) -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Workers Status</div>
+                </div>
+                
+                <!-- Workers Info -->
+                <div style="font-size: 14px; margin-bottom: 8px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Active Workers:</span><span id="activeWorkers">3/5</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Queue Size:</span><span id="queueSize">5 tasks</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Avg Speed:</span><span id="avgSpeed">35/min</span>
+                    </div>
+                </div>
+
+                <!-- Worker Control Buttons -->
+                <div style="border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 8px;">
+                        <button title="Заморозить работу всех таскеров" style="padding: 4px 6px; font-size: 11px; border: 1px solid #ddd; border-radius: 4px; background: #ffc107; color: white; cursor: pointer;">❄️ Freeze Workers</button>
+                        <button title="Очистить очередь задач" style="padding: 4px 6px; font-size: 11px; border: 1px solid #ddd; border-radius: 4px; background: #dc3545; color: white; cursor: pointer;">🗑️ Clear Queue</button>
+                    </div>
+
+                    <!-- Current Worker Tasks -->
+                    <div style="font-size: 12px; margin-bottom: 4px; font-weight: 600;">Current Worker Tasks:</div>
+                    <div style="font-size: 11px; height: 80px; overflow-y: auto; background: #f8f9fa; padding: 4px; border-radius: 4px;">
+                        <div style="margin-bottom: 2px;"><strong>W1:</strong> load_vacancies - processing filter "Python Dev" (894/1000 IDs)</div>
+                        <div style="margin-bottom: 2px;"><strong>W2:</strong> fetch_employers - loading company details (78/89 employers)</div>
+                        <div style="margin-bottom: 2px;"><strong>W3:</strong> cleanup - archiving old data, waiting for next cycle</div>
+                        <div style="color: #666; margin-bottom: 2px;"><strong>W4:</strong> idle - waiting for sync_host2 task</div>
+                        <div style="color: #666;"><strong>W5:</strong> idle - waiting for analyze_host3 task</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                    
+                    <div style="font-size: 8px; color: #666; margin-bottom: 2px;">
+                        Total: <strong>12</strong> | Active: <strong id="activeFilters">8</strong> | Test: <strong>4</strong>
+                    </div>
+
+                    <div style="max-height: 55px; overflow-y: auto; font-size: 8px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa; font-weight: 600;">
+                                    <td style="padding: 1px;">✓</td>
+                                    <td style="padding: 1px;">Type</td>
+                                    <td style="padding: 1px;">Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 1px;"><input type="checkbox" checked style="transform: scale(0.8);"></td>
+                                    <td style="padding: 1px;">Python Dev</td>
+                                    <td style="padding: 1px; color: #28a745;">1247 ids</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 1px;"><input type="checkbox" checked style="transform: scale(0.8);"></td>
+                                    <td style="padding: 1px;">Java Senior</td>
+                                    <td style="padding: 1px; color: #ffc107;">67% of 894</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1px;"><input type="checkbox" style="transform: scale(0.8);"></td>
+                                    <td style="padding: 1px;">Test Filter</td>
+                                    <td style="padding: 1px; color: #666;">-</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 1px;"><input type="checkbox" checked style="transform: scale(0.8);"></td>
+                                    <td style="padding: 1px;">React Frontend</td>
+                                    <td style="padding: 1px; color: #666;">wait ids</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок 4: Tasks Queue & Statistics -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Tasks & Queue</div>
+                </div>
+                
+                <!-- Vacancy Statistics -->
+                <div style="font-size: 10px; margin-bottom: 4px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Vacancies:</span><span id="vacancyCount">1,247</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Employers:</span><span id="employerCount">89</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Queue ETA:</span><span id="queueEta">~15min</span>
+                    </div>
+                </div>
+
+                <!-- Task Queue Details -->
+                <div style="border-top: 1px solid #eee; padding-top: 4px; margin-top: 4px;">
+                    <div style="font-size: 8px; margin-bottom: 2px; font-weight: 600;">Task Queue by Filters:</div>
+                    <div style="font-size: 8px; max-height: 60px; overflow-y: auto;">
+                        <div style="display: flex; justify-content: space-between; padding: 1px 0;">
+                            <span>Python Dev:</span><span style="color: #28a745;">Loading (1247)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 1px 0; background: #f8f9fa;">
+                            <span>Java Senior:</span><span style="color: #ffc107;">Queue (894)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 1px 0;">
+                            <span>DevOps:</span><span style="color: #666;">Pending (156)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 1px 0; background: #f8f9fa;">
+                            <span>QA Engineer:</span><span style="color: #666;">Waiting (78)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 1px 0;">
+                            <span>Total Queued:</span><span style="font-weight: 600;">2,375 tasks</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // 2.5.7 Manual Refresh
+        function manualRefresh() {
+            document.getElementById('lastRefresh').textContent = new Date().toLocaleTimeString().slice(0,8);
+            updateAllMetrics();
+            console.log('Manual refresh at', new Date().toLocaleTimeString());
+        }
+        
+        // 2.5.9 Filter Management
+        function toggleAllFilters(enable) {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = enable);
+            updateActiveFiltersCount();
+        }
+        
+        function invertFilters() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = !cb.checked);
+            updateActiveFiltersCount();
+        }
+        
+        function updateActiveFiltersCount() {
+            const activeCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            document.getElementById('activeFilters').textContent = activeCount;
+        }
+        
+        function updateAllMetrics() {
+            // Update system metrics
+            const cpuValue = Math.floor(Math.random() * 40) + 30;
+            const ramValue = Math.floor(Math.random() * 30) + 50;
+            const diskValue = Math.floor(Math.random() * 20) + 15;
+            
+            document.getElementById('cpuUsage').textContent = cpuValue + '%';
+            document.getElementById('ramUsage').textContent = ramValue + '%';
+            document.getElementById('diskUsage').textContent = diskValue + '%';
+            
+            // Update workers and stats
+            document.getElementById('vacancyCount').textContent = (1247 + Math.floor(Math.random() * 100)).toLocaleString();
+            document.getElementById('employerCount').textContent = (89 + Math.floor(Math.random() * 10));
+            document.getElementById('avgSpeed').textContent = (30 + Math.floor(Math.random() * 20)) + '/min';
+            
+            // Update health score
+            const healthScore = Math.floor((100 - cpuValue/2 - ramValue/3) * 10) / 10;
+            document.getElementById('healthScore').textContent = 'CPU+RAM+Disk: ' + healthScore + '%';
+        }
+        
+        // Auto-update every 5 seconds
+        setInterval(updateAllMetrics, 5000);
+        updateActiveFiltersCount();
+        
+        console.log('HH v4 Compact Panel loaded');
+    </script>
+</body>
+</html>

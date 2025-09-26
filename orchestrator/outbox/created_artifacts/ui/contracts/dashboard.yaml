@@ -1,0 +1,9 @@
+components:
+  - id: system_health_card
+    selector: '[data-test="status-card-system_health_card"]'
+    required: true
+    enabled: true
+  - id: daemon_status_card
+    selector: '[data-test="status-card-daemon_status_card"]'
+    required: true
+    enabled: true

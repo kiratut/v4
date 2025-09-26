@@ -1,0 +1,13 @@
+id: '2.1.1'
+title: Достаточность локальных ресурсов ОС
+description: "Контроль ресурсов\: диск <20%, память <20%, процессор >90% (критерии проблемы). Пороговые значения в параметрах. Нужно замерять среднее потребление за период с предыдущего заметра (например, 1 сек - параметр частоты)."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_resource_monitoring_critical_thresholds
+module_paths:
+  - core/scheduler_daemon.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

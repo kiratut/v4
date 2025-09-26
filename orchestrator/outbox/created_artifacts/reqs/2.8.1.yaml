@@ -1,0 +1,13 @@
+id: '2.8.1'
+title: Диагностика работы профилей авторизации hh.ru
+description: Проверка состояния профилей
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_hh_authorization
+module_paths:
+  - core/auth.py
+owner: orchestrator
+priority: 1
+version: '1.0.0'

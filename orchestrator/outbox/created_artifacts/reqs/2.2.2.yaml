@@ -1,0 +1,12 @@
+id: '2.2.2'
+title: Очистка архивов логов
+description: "Архивы логов >100МБ\: удаление самых старых архивов. Макс объем - параметр. Запись в лог."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - cli_v4.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

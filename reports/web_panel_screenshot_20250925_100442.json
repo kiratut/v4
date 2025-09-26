@@ -1,0 +1,12 @@
+{
+  "screenshot": "C:\\DEV\\hh-applicant-tool\\hh_v3\\v4\\reports\\web_panel_screenshot_20250925_100442.png",
+  "meta": {
+    "url": "http://localhost:8000/",
+    "headerTitle": "HH v4 Control Panel",
+    "headerVersion": "v4.00 • 24.09.2025 12:45",
+    "daemonStatus": "PID: 33624 • Started: 2025-09-25T09:36:23.629953",
+    "apiHealth": "200 OK • 0 bans (10:04:49)",
+    "taskStats": "0 running, 0 pending",
+    "has_server_unix": true
+  }
+}

@@ -1,0 +1,13 @@
+id: '2.10.2'
+title: Замер скорости
+description: Тестирование производительности БД
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_database_optimization
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

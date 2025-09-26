@@ -1,0 +1,12 @@
+id: '2.11.4'
+title: Сохранение ID для загрузки вакансий
+description: "Формирование очереди загрузки\: проверка наличия в очереди активных/не начатых задач на скачивание версий вакансий по таблице t, добавление в очередь задач скачивание уникальных Id вакансий ( c id фильтра по которому загрузка)."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/database_v3.py
+owner: orchestrator
+priority: 2
+version: '1.0.0'

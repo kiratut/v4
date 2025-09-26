@@ -1,0 +1,12 @@
+id: '2.9.3'
+title: Обработка ошибок и банов LLM (ротация в круге применимости, остановка при отказах всех)
+description: Восстановление после блокировок LLM
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'

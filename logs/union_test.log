@@ -1,0 +1,12 @@
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [WARNING] plugins.fetcher_v4: Switching User-Agent from 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' to safe browser UA and retrying
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [WARNING] plugins.fetcher_v4: Dropping Authorization header due to 403; retrying unauthenticated
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset
+2025-09-26 20:32:13 [WARNING] core.auth: Auth provider 'primary_app' marked as failed
+2025-09-26 20:32:13 [INFO] core.auth: Rotated to auth provider 'oauth_backup' (index 1)
+2025-09-26 20:32:13 [INFO] core.auth: Auth rotation state reset

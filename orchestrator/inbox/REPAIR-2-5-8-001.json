@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-5-8-001",
+  "type": "generate_tests",
+  "requirement_id": "2.5.8",
+  "input_files": [
+    "web/static/dashboard.js"
+  ],
+  "expected_outputs": [
+    "test_filter_interface.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "filter-interface",
+    "search-params"
+  ],
+  "estimated_effort_hours": 5,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for filter interface including search parameter controls, filter validation and result filtering",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Filter interface testing requires understanding of search controls and parameter validation",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for filter interface including search parameter controls, filter validation and result filtering",
+    "switch_instruction_rus": "Проверьте корректность тестирования интерфейса фильтров"
+  },
+  "human_notes_rus": "Тесты интерфейса фильтров - параметры поиска, валидация, фильтрация результатов",
+  "auto_execute": true
+}

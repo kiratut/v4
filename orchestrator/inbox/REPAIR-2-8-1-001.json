@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-8-1-001",
+  "type": "generate_tests",
+  "requirement_id": "2.8.1",
+  "input_files": [
+    "core/auth.py"
+  ],
+  "expected_outputs": [
+    "test_hh_authorization.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "auth-profile-testing",
+    "profile-validation"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-oss-20b",
+  "suggested_prompt": "Create comprehensive tests for HH authorization profile diagnostics including profile validation, connectivity checks and status reporting",
+  "model_recommendation": {
+    "suggested_model": "gpt-oss-20b",
+    "model_recommendation_reason": "Authorization testing requires understanding of authentication patterns and profile validation logic",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "StarCoder"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create comprehensive tests for HH authorization profile diagnostics including profile validation, connectivity checks and status reporting",
+    "switch_instruction_rus": "Проверьте корректность тестирования авторизации HH"
+  },
+  "human_notes_rus": "Тесты диагностики профилей авторизации HH.ru - валидация профилей, проверка связности",
+  "auto_execute": false
+}

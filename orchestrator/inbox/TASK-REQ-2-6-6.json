@@ -1,0 +1,32 @@
+{
+  "task_id": "TASK-REQ-2-6-6",
+  "type": "generate_tests",
+  "requirement_id": "2.6.6",
+  "input_files": [
+    "core/db_log_handler.py"
+  ],
+  "expected_outputs": [
+    "test_logging_config.py"
+  ],
+  "priority": "P0",
+  "constraints": [
+    "logging-validation",
+    "handler-config"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for logging configuration including handler setup and log level validation",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Logging configuration testing requires understanding of Python logging framework",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for logging configuration including handler setup and log level validation",
+    "switch_instruction_rus": "Проверьте корректность конфигурации логирования"
+  },
+  "human_notes_rus": "Тесты конфигурации логирования - критично для диагностики",
+  "auto_execute": false
+}

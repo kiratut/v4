@@ -1,0 +1,19 @@
+{
+  "task_id": "SUB-TASK-001",
+  "status": "decomposed",
+  "created_at": "2025-09-26T10:00:00Z",
+  "claimed_by": null,
+  "model_used": null,
+  "suggested_model": "grok-code-fast-1",
+  "suggested_prompt": "Add data-test attributes ...",
+  "model_recommendation_reason": "Single-file change, low complexity.",
+  "tokens_used": 0,
+  "artifacts": [],
+  "metrics": {},
+  "human_notes_rus": "",
+  "human_response_rus": "",
+  "approved_by": null,
+  "approved_at": null,
+  "logs": [],
+  "auto_execute": true
+}

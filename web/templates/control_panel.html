@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH v4 Control Panel</title>
+    <link href="/static/panel.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-left">
+            <h1 id="headerTitle">HH v4 Control Panel</h1>
+            <div id="headerVersion" class="subtitle">v4.0.0</div>
+        </div>
+        <div class="header-right">
+            <button id="manualRefreshBtn" class="btn btn-primary">🔄 Refresh</button>
+            <span id="lastRefresh" class="subtitle">--:--:--</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- server-unix marker for tests -->
+        <span id="serverUnixTime" data-unix-time="{{ unix_time }}" style="display:none"></span>
+
+        <!-- 2.5.2 Самодиагностика - Status Overview Row -->
+        <div class="status-row"></div>
+
+        <!-- Compact Dashboard Grid - 4 колонки -->
+        <div class="dashboard-grid"></div>
+    </div>
+
+    <script src="/static/panel.js?v=20250924"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+id: '2.5.6'
+title: Сжатие показателей в сводки Telegram и отправка
+description: "Упаковка истории показателей за период (сутки - параметр) в короткое сообщение и вложение."
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 3
+version: '1.0.0'

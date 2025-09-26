@@ -1,0 +1,10 @@
+--- a/orchestrator/workspaces/REPAIR-2-8-4-001/manifest.json
++++ b/orchestrator/workspaces/REPAIR-2-8-4-001/manifest.json
+@@ -3,4 +3,5 @@
+   "task_id": "REPAIR-2-8-4-001",
+   "status": "claimed",
+   "claimed_by": "cascade-tier3-worker",
+-  "started_at": "2025-09-26T18:05:00+03:00"
++  "started_at": "2025-09-26T18:05:00+03:00",
++  "auto_executed": true
+ }

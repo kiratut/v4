@@ -1,0 +1,32 @@
+{
+  "task_id": "REPAIR-2-6-2-001",
+  "type": "generate_tests",
+  "requirement_id": "2.6.2",
+  "input_files": [
+    "config/config_v4.json"
+  ],
+  "expected_outputs": [
+    "test_telegram_config.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "telegram-config",
+    "notification-settings"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for Telegram configuration including bot token validation, notification settings and message formatting",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Telegram configuration testing requires understanding of bot API and notification systems",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for Telegram configuration including bot token validation, notification settings and message formatting",
+    "switch_instruction_rus": "Проверьте корректность тестирования настроек Telegram"
+  },
+  "human_notes_rus": "Тесты настройки Telegram - валидация токена бота, настройки уведомлений",
+  "auto_execute": true
+}

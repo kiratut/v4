@@ -1,0 +1,33 @@
+{
+  "task_id": "REPAIR-2-5-1-001",
+  "type": "generate_tests",
+  "requirement_id": "2.5.1",
+  "input_files": [
+    "web/server.py",
+    "web/monitoring_dashboard.py"
+  ],
+  "expected_outputs": [
+    "test_dashboard_indicators.py"
+  ],
+  "priority": "P1",
+  "constraints": [
+    "dashboard-indicators",
+    "api-endpoints"
+  ],
+  "estimated_effort_hours": 4,
+  "suggested_model": "gpt-4",
+  "suggested_prompt": "Create tests for dashboard indicators including API endpoint validation, data display and real-time updates",
+  "model_recommendation": {
+    "suggested_model": "gpt-4",
+    "model_recommendation_reason": "Dashboard indicator testing requires understanding of API integration and real-time data display",
+    "estimated_complexity": "medium",
+    "alternative_models": [
+      "sonnet-4"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Create tests for dashboard indicators including API endpoint validation, data display and real-time updates",
+    "switch_instruction_rus": "Проверьте корректность тестирования индикаторов панели"
+  },
+  "human_notes_rus": "Тесты индикаторов панели управления - API endpoints, отображение данных",
+  "auto_execute": true
+}

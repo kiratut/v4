@@ -1,0 +1,11 @@
+id: '2.17'
+title: Прочее
+description: Прочее
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+module_paths:
+owner: orchestrator
+priority: 
+version: '1.0.0'

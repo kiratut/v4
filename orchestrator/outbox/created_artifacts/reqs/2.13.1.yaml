@@ -1,0 +1,13 @@
+id: '2.13.1'
+title: Запрос LLM и сохранение ответов
+description: LLM обработка новых вакансий
+acceptance_criteria:
+  - type: manual_check
+    expected: 'Verify implementation and tests exist'
+test_ids:
+  - test_vacancy_analysis_request
+module_paths:
+  - core/host3_client.py
+owner: orchestrator
+priority: 3
+version: '1.0.0'
