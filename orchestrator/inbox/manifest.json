@@ -15,5 +15,17 @@
   "approved_by": null,
   "approved_at": null,
   "logs": [],
-  "auto_execute": true
+  "auto_execute": true,
+  "model_recommendation": {
+    "suggested_model": "grok-code-fast-1",
+    "model_recommendation_reason": "Auto-generated for task with P2 priority",
+    "estimated_complexity": "low",
+    "alternative_models": [
+      "gpt-4-turbo",
+      "claude-3-sonnet"
+    ],
+    "require_human_switch": false,
+    "suggested_prompt": "Add data-test attributes ...",
+    "switch_instruction_rus": "Проверьте задачу SUB-TASK-001 - приоритет P2."
+  }
 }
