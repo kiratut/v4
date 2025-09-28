@@ -22,8 +22,7 @@ from typing import List, Set, Tuple
 # Измените эти параметры по умолчанию
 
 # Каталог для обработки
-#DEFAULT_DIRECTORY = "."
-DEFAULT_DIRECTORY = r"C:\DEV\hh-applicant-tool\hh_v3\v4\orchestrator\workspaces\REPAIR-2-8-4-001"
+DEFAULT_DIRECTORY = "."
 
 # Расширения файлов для включения (пустой список = все файлы)
 DEFAULT_INCLUDE_EXTENSIONS = ["py", "md", "txt","json"]
@@ -38,8 +37,7 @@ DEFAULT_MAX_SIZE = 100 * 1024
 DEFAULT_EXCLUDE_DIRS = ["backup", "examples", ".git", "logs", "__pycache__",".venv","node_modules"]
 
 # Выходной файл (пустая строка = вывод в консоль)
-# DEFAULT_OUTPUT_FILE = "docs/catalog_v4.md"
-DEFAULT_OUTPUT_FILE = "docs/catalog_REPAIR-2-8-4-001.md"
+DEFAULT_OUTPUT_FILE = "docs/catalog_v4.md"
 
 # === КОНЕЦ КОНФИГУРАЦИИ ===
 

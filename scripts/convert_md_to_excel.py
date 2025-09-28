@@ -126,7 +126,7 @@ def _get_canonical_headers_from_old_md(md_path):
         return []
 
 # Прямой вызов для обновления существующего req.xlsx с сохранением форматирования
-input_file = r"c:\DEV\hh-applicant-tool\hh_v3\v4\docs\req_16572309_final.md"
+input_file = r"c:\DEV\hh-applicant-tool\hh_v3\v4\docs\req_16572309.md"
 output_file = r"c:\DEV\hh-applicant-tool\hh_v3\v4\docs\req — копия.xlsx"
 
 # Chg_MDParser_2309: если присутствуют файлы req_*.md — используем последний

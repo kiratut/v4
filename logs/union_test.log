@@ -1,12 +1,12 @@
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [WARNING] plugins.fetcher_v4: Switching User-Agent from 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' to safe browser UA and retrying
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [WARNING] plugins.fetcher_v4: Dropping Authorization header due to 403; retrying unauthenticated
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
-2025-09-26 22:19:44 [WARNING] core.auth: Auth provider 'primary_app' marked as failed
-2025-09-26 22:19:44 [INFO] core.auth: Rotated to auth provider 'oauth_backup' (index 1)
-2025-09-26 22:19:44 [INFO] core.auth: Auth rotation state reset
+HH v4 CONSOLIDATED TEST RESULTS
+Total: 14, Passed: 11, Overall: 78.6%
+Priority 1: 7/8 (87.5%)
+Priority 2: 4/6 (66.7%)
+FAILED TESTS:
+- 2.4.2 - Проверка веб-интерфейса: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)
+- 2.4.4 + 2.5.7 - Проверка веб-панели: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)
+- 2.5.7 - E2E: Скриншот главной страницы панели и извлечение ключевых текстов: Веб-сервер не доступен ни на 5000, ни на порту из config, ни на 8000
+--- MIN LOAD TEST ---
+Filter: python-hybrid-latest
+Loaded: 0 from 1 pages in 4.77s
+DB before/after/delta: 2030/2030/0
